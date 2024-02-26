@@ -27,8 +27,10 @@ const getWeatherInfo = async (lat,lon) => {
     const location = data.name;
     const temperature = Math.round(data.main.temp);
     const description = data.weather[0].description;
+    const icon = data.weather[0].icon;
 
     document.getElementById("location-area").innerHTML = `<li id="location-area">location: ${location}</li>`;
     document.getElementById("feelsLike-area").innerHTML = `<li id="feelsLike-area">temperature: ${temperature}°</li>`;
     document.getElementById("description-area").innerHTML = `<li id="description-area">description: ${description}</li>`;
+    document.getElementById("icon-area").setAttribute(`src`,`https://openweathermap.org/img/wn/${icon}@2x.png`);
 }

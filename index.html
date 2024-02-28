@@ -19,17 +19,20 @@
       src="https://kit.fontawesome.com/ebf5d5da1d.js"
       crossorigin="anonymous"
     ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
     <link rel="stylesheet" href="main.css" />
   </head>
   <body>
     <header class="header-area">
-      <img src="./teamProjectLogo.png" alt="team-logo" />
+      <img src="./image-files/teamProjectLogo.png" alt="team-logo" />
       <nav class="navBar">
         <div class="searchContainer">
-          <button><i class="fa-solid fa-magnifying-glass"></i></button>
-          <input type="text" placeholder="Search.." />
-          <a href="#" class="logIn">Log in</a>
-          <a href="#" class="logIn">Sign up</a>
+          <a href="#" class="logIn">Weather</a>
+          <a href="#" class="logIn">About</a>
+          <a href="#" class="login-icon"><i class="fa-solid fa-user"></i></a>
         </div>
       </nav>
     </header>
@@ -60,13 +63,21 @@
         </div>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img class="d-block" src="./newYorkCity.jpg" alt="First slide" />
+            <img
+              class="d-block"
+              src="./image-files/newYorkCity.jpg"
+              alt="First slide"
+            />
             <div class="carousel-caption d-md-block">
               <h1>
                 Ask your trip, <br />
                 Plan with smart AI
               </h1>
               <a href="#" class="click-button">Click and check it</a>
+              <div class="searchContainer">
+                <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                <input type="text" placeholder="Search.." />
+              </div>
               <div class="weatherBox">
                 <h5>Weather Info</h5>
                 <p>Location</p>
@@ -78,7 +89,7 @@
           <div class="carousel-item">
             <img
               class="d-block"
-              src="./vancouverPhoto.jpg"
+              src="./image-files/vancouverPhoto.jpg"
               alt="Second slide"
             />
             <div class="carousel-caption d-md-block">
@@ -88,6 +99,10 @@
                   Plan with smart AI
                 </h1>
                 <a href="#" class="click-button">Click and check it</a>
+                <div class="searchContainer">
+                  <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                  <input type="text" placeholder="Search.." />
+                </div>
                 <div class="weatherBox">
                   <h5>Weather Info</h5>
                   <p>Location</p>
@@ -98,13 +113,21 @@
             </div>
           </div>
           <div class="carousel-item">
-            <img class="d-block" src="./seattlePhoto.jpg" alt="Third slide" />
+            <img
+              class="d-block"
+              src="./image-files/seattlePhoto.jpg"
+              alt="Third slide"
+            />
             <div class="carousel-caption d-md-block">
               <h1>
                 Ask your trip, <br />
                 Plan with smart AI
               </h1>
               <a href="#" class="click-button">Click and check it</a>
+              <div class="searchContainer">
+                <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                <input type="text" placeholder="Search.." />
+              </div>
               <div class="weatherBox">
                 <h5>Weather Info</h5>
                 <p>Location</p>
@@ -116,22 +139,186 @@
         </div>
       </div>
     </div>
-    <main class="container">
-      <section class="container2">
-        <div class="recommend-phrase">
-          <h2>Recommended Destinations</h2>
+    <h3>Weather</h3>
+    <section class="slider-container">
+      <div class="container">
+        <div class="swiper card_slider">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="img_box">
+                <img src="./image-files/hawaiiPhoto.jpg" alt="maui" srcset="" />
+                <div class="overlay">
+                  <div class="slide-content">
+                    <div class="weather-info">Temperature</div>
+                    <div class="description">Description</div>
+                  </div>
+                </div>
+                <div class="slide-title">Hawaii</div>
+                <div class="slide-subtitle">USA</div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="img_box">
+                <img src="./image-files/seoulPhoto.jpg" alt="seoul" srcset="" />
+                <div class="slide-title">Seoul</div>
+                <div class="slide-subtitle">Korea</div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="img_box">
+                <img src="./image-files/kyotoPhoto.jpg" alt="kyoto" srcset="" />
+                <div class="slide-title">Kyoto</div>
+                <div class="slide-subtitle">Japan</div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="img_box">
+                <img
+                  src="./image-files/vietnamPhoto.jpg"
+                  alt="vietnam"
+                  srcset=""
+                />
+                <div class="slide-title">Sapa</div>
+                <div class="slide-subtitle">Vietnam</div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="img_box">
+                <img src="./image-files/banffPhoto.jpg" alt="banff" srcset="" />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="img_box">
+                <img src="./image-files/banffPhoto.jpg" alt="banff" srcset="" />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="img_box">
+                <img src="./image-files/banffPhoto.jpg" alt="banff" srcset="" />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="img_box">
+                <img src="./image-files/banffPhoto.jpg" alt="banff" srcset="" />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="img_box">
+                <img src="./image-files/banffPhoto.jpg" alt="banff" srcset="" />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="img_box">
+                <img src="./image-files/banffPhoto.jpg" alt="banff" srcset="" />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="img_box">
+                <img src="./image-files/banffPhoto.jpg" alt="banff" srcset="" />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="img_box">
+                <img src="./image-files/banffPhoto.jpg" alt="banff" srcset="" />
+              </div>
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
         </div>
-        <div class="card-carousel">
-          <div class="recommend-section"></div>
-          <div class="recommend-section"></div>
-          <div class="recommend-section"></div>
-          <div class="recommend-section"></div>
+      </div>
+    </section>
+    <h3>Visited Places</h3>
+    <section class="slider-container">
+      <div class="container">
+        <div class="swiper card_slider">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="img_box">
+                <img
+                  src="./image-files/montrealPhoto.jpg"
+                  alt="montreal"
+                  srcset=""
+                />
+                <div class="slide-title">Montreal</div>
+                <div class="slide-subtitle">Canada</div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="img_box">
+                <img
+                  src="./image-files/francePhoto.jpg"
+                  alt="france"
+                  srcset=""
+                />
+                <div class="slide-title">Paris</div>
+                <div class="slide-subtitle">France</div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="img_box">
+                <img
+                  src="./image-files/jejuIslandPhoto.jpg"
+                  alt="jeju"
+                  srcset=""
+                />
+                <div class="slide-title">Jeju Island</div>
+                <div class="slide-subtitle">Korea</div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="img_box">
+                <img src="./image-files/englandPhoto.jpg" alt="uk" srcset="" />
+                <div class="slide-title">London</div>
+                <div class="slide-subtitle">England</div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="img_box">
+                <img src="./image-files/banffPhoto.jpg" alt="banff" srcset="" />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="img_box">
+                <img src="./image-files/banffPhoto.jpg" alt="banff" srcset="" />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="img_box">
+                <img src="./image-files/banffPhoto.jpg" alt="banff" srcset="" />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="img_box">
+                <img src="./image-files/banffPhoto.jpg" alt="banff" srcset="" />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="img_box">
+                <img src="./image-files/banffPhoto.jpg" alt="banff" srcset="" />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="img_box">
+                <img src="./image-files/banffPhoto.jpg" alt="banff" srcset="" />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="img_box">
+                <img src="./image-files/banffPhoto.jpg" alt="banff" srcset="" />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="img_box">
+                <img src="./image-files/banffPhoto.jpg" alt="banff" srcset="" />
+              </div>
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
         </div>
-      </section>
-      <section class="container3"></section>
-      <section class="container3"></section>
-    </main>
+      </div>
+    </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="main.js"></script>
   </body>
 </html>

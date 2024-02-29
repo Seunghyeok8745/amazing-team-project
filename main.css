@@ -4,21 +4,25 @@
 html {
   scroll-behavior: smooth;
 }
+body {
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+/* header */
 .header-area {
   display: flex;
   background-color: white;
   padding: 30px 70px;
   position: sticky;
-  margin-top: 5px;
   top: 0;
   z-index: 999;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.234);
 }
+
 .header-area img {
   max-width: 100%;
   height: 30px;
-}
-.mySwiper {
-  width: 80em;
 }
 .navBar {
   padding-top: 10px;
@@ -39,6 +43,7 @@ input {
   left: -9.5em;
   top: -11.6em;
 }
+/* main1 text bar */
 .searchContainer {
   position: relative;
 }
@@ -49,26 +54,6 @@ input {
 }
 .searchContainer input[type='text']::placeholder {
   color: white;
-}
-.navBar a {
-  width: 79px;
-  background-color: black;
-  border: none;
-  color: white;
-  padding: 12px 20px;
-  font-size: 16px;
-  border-radius: 20px;
-  text-align: center;
-  text-decoration: none;
-  margin-right: 15px;
-  font-weight: lighter;
-  letter-spacing: 1.5px;
-}
-.navBar .login-icon {
-  border-radius: 50%;
-  padding: 12px 15px;
-  margin-right: 0;
-  font-size: 18px;
 }
 .searchContainer button {
   position: absolute;
@@ -84,11 +69,28 @@ input {
   left: -9.5em;
   top: -11.8em;
 }
-
-.searchContainer .img-area {
-  display: flex;
-  justify-content: center;
+/* navBar button */
+.navBar a {
+  width: 79px;
+  background-color: #37558e;
+  border: none;
+  color: white;
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 20px;
+  text-align: center;
+  text-decoration: none;
+  margin-right: 15px;
+  font-weight: medium;
+  letter-spacing: 1.5px;
 }
+.navBar .login-icon {
+  border-radius: 50%;
+  padding: 12px 15px;
+  margin-right: 0;
+  font-size: 18px;
+}
+/* main1 carousel */
 .img-area img {
   width: 100vw;
   height: 84vh;
@@ -116,6 +118,7 @@ input {
   font-weight: 200;
   letter-spacing: 1px;
 }
+/* main1 weather box area */
 .weatherBox {
   position: absolute;
   right: -170px;
@@ -142,6 +145,7 @@ input {
   font-weight: 100;
   letter-spacing: 1px;
 }
+/* main2 carousel */
 h3 {
   font-size: 30px;
   margin-top: 90px;
@@ -150,8 +154,9 @@ h3 {
 }
 .img_box img {
   max-width: 100%;
-  filter: brightness(70%);
+  filter: brightness(73%);
   cursor: pointer;
+  border-radius: 15px;
 }
 .slider_container .container {
   padding: 0 15px;
@@ -169,7 +174,7 @@ div .container {
 .swiper-pagination .swiper-pagination-bullet {
   width: 30px;
   height: 5px;
-  background-color: #0f0f0fd5;
+  background-color: #7699b5;
   margin: 0 5px;
   border-radius: 0;
 }
@@ -200,7 +205,7 @@ div .container {
   letter-spacing: 1px;
   opacity: 1;
 }
-
+/* main2 carousel hover screen */
 .overlay {
   position: absolute;
   top: 0;
@@ -226,4 +231,170 @@ div .container {
 
 .img_box:hover {
   filter: brightness(68%);
+}
+/* recommendation and wishlist setting */
+.card .image-box img {
+  height: 280px;
+  width: 282px;
+  border-radius: 15px;
+}
+.card {
+  border: none;
+  width: 300px;
+}
+.card h3 {
+  margin-top: 15px;
+  margin-left: 0;
+  font-size: 22px;
+}
+.card p {
+  text-align: left;
+}
+/*notification*/
+.noti-container {
+  height: 95vh;
+}
+.noti-box {
+  background-color: #c9dcec;
+  text-align: center;
+  padding: 60px 0px;
+  margin-top: 130px;
+}
+.noti-name {
+  font-size: 30px;
+  font-weight: 500;
+}
+.noti-desc {
+  font-size: 21px;
+  font-weight: 300;
+  color: rgb(17, 55, 95);
+}
+.noti-btn {
+  padding: 20px;
+}
+.noti-btn-detail {
+  background-color: rgb(255, 255, 255);
+  color: rgb(19, 54, 75);
+  border-radius: 7px;
+  font-size: 16px;
+}
+.noti-btn-first {
+  width: 300px;
+  min-height: 30px;
+  min-width: 120px;
+  margin-right: 10px;
+  font-weight: 400;
+  font-size: 17px;
+  padding: 8.5px;
+  border: none;
+  background-color: #7699b5;
+  color: white;
+}
+.noti-btn-second {
+  padding: 10px;
+  width: 47px;
+  min-height: 30px;
+  min-width: 40px;
+  background-color: #ffffff;
+  border: none;
+}
+.noti-btn-first:hover {
+  background-color: white;
+  color: #4184bb;
+  /*transition: 0.9s;*/
+  cursor: pointer;
+}
+
+.noti-btn-second:active {
+  padding: 10px;
+  border: none;
+  background-color: #afbac2;
+  cursor: pointer;
+}
+.noti-btn-second:hover {
+  cursor: pointer;
+}
+
+/*footer*/
+.footer {
+  position: absolute;
+  bottom: 0;
+  border: 2px solid #37558e;
+  background-color: #37558e;
+  width: 100%;
+  margin-top: 10px;
+}
+.footer-container {
+  padding: 40px;
+  padding-left: 70px;
+  padding-right: 70px;
+}
+ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.first-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 80px;
+}
+.sns-icon {
+  width: 38px;
+  height: 38px;
+  background-color: white;
+  border-radius: 50%;
+  margin-right: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sns-icon:hover {
+  background-color: rgb(209, 216, 234);
+  cursor: pointer;
+}
+.second-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.info-deco {
+  font-size: 18px;
+  color: white;
+  font-weight: 500;
+  padding: 10px;
+  padding-right: 20px;
+}
+.info-deco-edit {
+  padding-right: 7px;
+}
+.info-deco:hover {
+  color: rgb(209, 216, 234);
+  cursor: pointer;
+}
+.footer-copyRight-area {
+  padding: 10px;
+  padding-top: 30px;
+  font-size: 15px;
+  color: #e0e0e0;
+  font-weight: 400;
+}
+.footer-brand-name {
+  font-size: 24px;
+  font-weight: 600;
+  color: white;
+}
+.appStore-area {
+  display: flex;
+}
+.apple-logo {
+  width: 134px;
+  height: 51px;
+  border: 9px solid #37558e;
+}
+.google-logo {
+  width: 134px;
+  height: 51px;
 }

@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getAuth, onAuthStateChanged ,signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-
+import { getFirestore ,addDoc,collection,getDocs,doc,deleteDoc,} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 const firebaseConfig = {
   apiKey: "AIzaSyCP01jRV0UHrVPtMU9mC7wBsxd5J1uDs7U",
   authDomain: "amazingteam-68fce.firebaseapp.com",
@@ -13,6 +13,8 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const db = getFirestore(app)
+
 
 onAuthStateChanged(auth, (user) => {
   if (user) {
@@ -24,8 +26,8 @@ onAuthStateChanged(auth, (user) => {
       const profile = document.getElementById('profileImage');
       const time = document.getElementById('lastSeen');
       //append user details
-      email.innerText = user.email;
-      username.innerText = user.displayName;
+      email.innerHTML = user.email;
+      username.innerHTML = user.displayName;
       profile.src = "https://lh3.googleusercontent.com/a/ACg8ocLKnJjfskBaCFPsLm8YN2vuXzWCE8iyF0WiKA5XoAqC2w=s96-c"
       console.log(user)
 
@@ -133,19 +135,76 @@ const showList=()=>{
   <li>${area[0]}</li>
   <li>${area[1]}</li>
   <li>${area[2]}</li>
+  <button id="findBtn" onclick="findBtn('${area[3]}','${area[4]}')">find</button>
   </ul>
   
   </div>
   `)
 
   gptDiv.innerHTML=resHTML
-console.log(GptRes,'GptRes')
-console.log(GptTra,'GptTra')
+
 }
 
 
 
+
+
 //----------------------------------------------------------------
+const showHisDiv=document.getElementById("showHisDiv")
+const historyFromFirestore=async()=>{
+  try{
+    const docRef= await addDoc(collection(db,"historyT"),{
+       name:"Eleven Madison Park",
+       description:" Eleven Madison Park, with Chef Daniel Humm at the helm, is a three-Michelin-starred restaurant known for its innovative tasting menus and exceptional service. The Art Deco-inspired dining room adds to the grandeur of the experience.",
+       country:"USA",
+       city:"NEW York",
+       address:"11 Madison Ave, New York, NY 10010"
+
+    })
+    console.log('good')
+  }catch(error){
+    console.log(error,'firestore')
+  }
+}
+
+
+
+
+
+
+//historyFromFirestore()
+async function deleteData(id){
+  try{
+    await deleteDoc(doc(db,"historyT",id));
+    console.log('deleted!!');
+    getDocs();
+  } catch(error) {
+    console.log(error,'deleteHistory');
+  }
+}
+
+async function showHistory() {
+  try {
+    const quertSnapshot = await getDocs(collection(db, "historyT"));
+    const historyHTMLArray = quertSnapshot.docs.map(doc => {
+      const data = doc.data();
+      return `
+        <ul>
+          <li>${doc.id}</li>
+          <li>${data.name}</li>
+          <li>${data.address}</li>
+          <li>${data.description}</li>
+          <button class="delBtn" onclick="deleteData('${doc.id}')">Delete</button>
+          <button class="updateBtn" onclick="updateData('${doc.id}')">Update</button>
+        </ul>
+      `;
+    });
+    const historyHTML = historyHTMLArray.join(""); // 배열을 문자열로 결합
+    document.getElementById("showHisDiv").innerHTML = historyHTML;
+  } catch (error) {
+    console.log(error, 'getHistory');
+  }
+}
 
 
 
@@ -153,43 +212,7 @@ console.log(GptTra,'GptTra')
 
 
 
-
-
-
-
-
-
-// function parseTipsArray(tipsArray) {
-//   const destinations = [];
-//   let currentDestination = {};
-
-//   tipsArray.forEach(line => {
-//       if (line.match(/^\d+\./)) {
-//           if (currentDestination.name) {
-//               destinations.push(currentDestination);
-//               currentDestination = {};
-//           }
-//           currentDestination.name = line.split(': ')[1];
-//       } else if (line.includes('주소: ')) {
-//           currentDestination.address = line.split('주소: ')[1];
-//       } else if (line.includes('설명: ')) {
-//           currentDestination.description = line.split('설명: ')[1];
-//       } else if (line.includes('위도: ')) {
-//           currentDestination.latitude = parseFloat(line.split('위도: ')[1]);
-//       } else if (line.includes('경도: ')) {
-//           currentDestination.longitude = parseFloat(line.split('경도: ')[1]);
-//       }
-//   });
-
-//   if (Object.keys(currentDestination).length > 0) {
-//       destinations.push(currentDestination);
-//   }
-
-//   return destinations;
-// }
-
-
-
+showHistory()
 
 
 postJSON(data);

@@ -1,3 +1,5 @@
+//다음 슬라이드에서 날씨 정보가 표시되지 않는다. -> 수정ing
+
 const API_KEY = `3b56745dd240621d3eaad2aac3d8a827`;
 
 const success = (position) => {

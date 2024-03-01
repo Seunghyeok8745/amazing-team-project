@@ -92,18 +92,7 @@ async function showHistoryT() {
 //================================
 //*** showHistory() 는 버튼 위에잇어야합니다 ***/
 showHistoryT()  
-//pin 버튼(위도경도 보여준다
-window.pinBtn = async function(lng, lat) {
-  try {
-    const regex = /-?\d+\.\d+/g;
-    const numbers = lng.match(regex);
-    const latitude = parseFloat(numbers[0]);
-    const longitude = parseFloat(numbers[1]);
-    console.log(latitude, longitude);
-  } catch(error) {
-    console.error('Error in pinBtn: ', error);
-  }
-}
+
 //--------------------------------------
 //forestore 에 gpt 가 보여준것들 리스트 지워주는 버튼
 window.deleteBtnT=async function(id){

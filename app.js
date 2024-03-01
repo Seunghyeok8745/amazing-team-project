@@ -39,14 +39,14 @@ const showList = async () => {
         const checkDup = await getDocs(query(collection(db,"historyT"), where("name","==",area[0])));
         if (checkDup.size === 0) {
           
-          await addDoc(collection(db, "historyT"), {
-            name: area[0],
-            description: area[3],
-            address: area[1]
-          });
-          console.log(area[0],'00000')
-          console.log(area[1],'11111')
-          console.log(area[2],'22222222')
+          // await addDoc(collection(db, "historyT"), {
+          //   name: area[0],
+          //   description: area[3],
+          //   address: area[1]
+          // });
+          // console.log(area[0],'00000')
+          // console.log(area[1],'11111')
+          // console.log(area[2],'22222222')
         } else {
           console.log('Already have the list');
         }
@@ -71,6 +71,19 @@ const showList = async () => {
     resHTML = [];
   }
   gptDiv.innerHTML = resHTML.join('');
+}
+
+//pin 버튼(위도경도 보여준다
+window.pinBtn = async function(lng, lat) {
+  try {
+    const regex = /-?\d+\.\d+/g;
+    const numbers = lng.match(regex);
+    const latitude = parseFloat(numbers[0]);
+    const longitude = parseFloat(numbers[1]);
+    console.log(latitude, longitude);
+  } catch(error) {
+    console.error('Error in pinBtn: ', error);
+  }
 }
 
 //--------------------------------------------------------

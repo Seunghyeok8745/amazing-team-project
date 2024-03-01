@@ -1,5 +1,3 @@
-//다음 슬라이드에서 날씨 정보가 표시되지 않는다. -> 수정ing
-
 const API_KEY = `3b56745dd240621d3eaad2aac3d8a827`;
 
 const success = (position) => {
@@ -26,10 +24,17 @@ const getWeatherInfo = async (latitude,longitude) => {
     const temperature = Math.round(data.main.temp);
     const description = data.weather[0].description;
     const icon = data.weather[0].icon;
-
+    
     document.getElementById("location-area").innerHTML = `<id="location-area">location: ${location}</id=>`;
     document.getElementById("feelsLike-area").innerHTML = `<id="feelsLike-area">temperature: ${temperature}°</id=>`;
     document.getElementById("description-area").innerHTML = `<id="description-area">description: ${description}</id=>`;
-    document.getElementById("icon-area").setAttribute(`src`,`https://openweathermap.org/img/wn/${icon}@2x.png`);
+
+    document.getElementById("location-area-1").innerHTML = `<id="location-area-1">location: ${location}</id=>`;
+    document.getElementById("feelsLike-area-1").innerHTML = `<id="feelsLike-area-1">temperature: ${temperature}°</id=>`;
+    document.getElementById("description-area-1").innerHTML = `<id="description-area-1">description: ${description}</id=>`;
+
+    document.getElementById("location-area-2").innerHTML = `<id="location-area-2">location: ${location}</id=>`;
+    document.getElementById("feelsLike-area-2").innerHTML = `<id="feelsLike-area-2">temperature: ${temperature}°</id=>`;
+    document.getElementById("description-area-2").innerHTML = `<id="description-area-2">description: ${description}</id=>`;
 }
 getWeatherInfo();

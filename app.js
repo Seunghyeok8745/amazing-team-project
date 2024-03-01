@@ -1,6 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getAuth, onAuthStateChanged ,signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import { getFirestore ,addDoc,collection,getDocs,doc,deleteDoc,} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { getFirestore ,addDoc,collection,getDocs,doc,deleteDoc,updateDoc,query,where} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
 const firebaseConfig = {
   apiKey: "AIzaSyCP01jRV0UHrVPtMU9mC7wBsxd5J1uDs7U",
   authDomain: "amazingteam-68fce.firebaseapp.com",
@@ -11,11 +12,72 @@ const firebaseConfig = {
   measurementId: "G-T9G82HFNV4"
 };
 
-const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
+
 const auth = getAuth(app);
-const db = getFirestore(app)
+ const db = getFirestore(app)
+ const gptDiv=document.getElementById('gptDiv')
+ let GptTra=[]
+ let GptRes=[]
+ const data = {
+   date: '3월4일2024년',
+   city: '서울',
+   country: '한국',
+   weather: 'sunny',
+   kind: '특별한추억'
+ };
+ 
+
+ const LOCAL_URL = `https://bktest1.onrender.com/project/ai`;
+
+//gpt 에서 여행명소 보여주는 함수
+const showList = async () => {
+  let resHTML;
+  try {
+    const promises = GptTra.map(async (area) => {
+      try {
+        const checkDup = await getDocs(query(collection(db,"historyT"), where("name","==",area[0])));
+        if (checkDup.size === 0) {
+          
+          await addDoc(collection(db, "historyT"), {
+            name: area[0],
+            description: area[3],
+            address: area[1]
+          });
+          console.log(area[0],'00000')
+          console.log(area[1],'11111')
+          console.log(area[2],'22222222')
+        } else {
+          console.log('Already have the list');
+        }
+        return `
+          <div class="gptRes">
+            <ul>
+              <li>${area[0]}</li>
+              <li>${area[1]}</li>
+              <li>${area[2]}</li>
+              <button id="pinBtn" onclick="pinBtn('${area[3]},${area[4]}')">find</button>
+            </ul>
+          </div>
+        `;
+      } catch (error) {
+        console.error('Error in showList: ', error);
+        return ''; // Return empty string if there's an error
+      }
+    });
+    resHTML = await Promise.all(promises);
+  } catch (error) {
+    console.error('Error in showList: ', error);
+    resHTML = [];
+  }
+  gptDiv.innerHTML = resHTML.join('');
+}
+
+//--------------------------------------------------------
 
 
+
+//firebase auth (로그인하면 이메일고 user 정보들 보여주는 함수)
 onAuthStateChanged(auth, (user) => {
   if (user) {
       //get user details
@@ -28,7 +90,7 @@ onAuthStateChanged(auth, (user) => {
       //append user details
       email.innerHTML = user.email;
       username.innerHTML = user.displayName;
-      profile.src = "https://lh3.googleusercontent.com/a/ACg8ocLKnJjfskBaCFPsLm8YN2vuXzWCE8iyF0WiKA5XoAqC2w=s96-c"
+      profile.src = user.photoURL || '';
       console.log(user)
 
 
@@ -44,26 +106,14 @@ logout.addEventListener("click" , function(){
        alert("logging out...");
        window.location.href = "index.html"
       }).catch((error) => {
-        // An error happened.
+        console.log(error,'user 정보들 - app.js')
       });
 })
 
 
-//------------------------gpt--------------------------
-const gptDiv=document.getElementById('gptDiv')
-let GptTra=[]
-let GptRes=[]
-const data = {
-  date: '3월4일2024년',
-  city: '뉴욕',
-  country: '미국',
-  weather: 'sunny',
-  kind: '특별한추억'
-};
+//-----------------------------------------------------
 
-let arrData=[]
-const LOCAL_URL = `https://bktest1.onrender.com/project/ai`;
-
+//gpt 연결해서 소스 받는 api 함수
 async function postJSON(data) {
   try {
     const response = await fetch(LOCAL_URL, {
@@ -101,7 +151,8 @@ for(let rest of restaurant){
     console.error("Error:", error);
   }
 }
-
+//-----------------------------------------
+//gpt 에서 받은 string 을 배열로 변경해주는 함수
 function parseTipsArray(tipsArray) {
   const nestedArray = [];
   let currentArray = [];
@@ -125,94 +176,12 @@ console.log(nestedArray,'nestedArray')
 }
 
 
-const showList=()=>{
-  let resHTML;
-  resHTML=GptTra.map((area)=>
- 
-  `
-  <div class="gptRes">
-  <ul>
-  <li>${area[0]}</li>
-  <li>${area[1]}</li>
-  <li>${area[2]}</li>
-  <button id="findBtn" onclick="findBtn('${area[3]}','${area[4]}')">find</button>
-  </ul>
-  
-  </div>
-  `)
-
-  gptDiv.innerHTML=resHTML
-
-}
+//------------------------------------------
 
 
 
 
 
-//----------------------------------------------------------------
-const showHisDiv=document.getElementById("showHisDiv")
-const historyFromFirestore=async()=>{
-  try{
-    const docRef= await addDoc(collection(db,"historyT"),{
-       name:"Eleven Madison Park",
-       description:" Eleven Madison Park, with Chef Daniel Humm at the helm, is a three-Michelin-starred restaurant known for its innovative tasting menus and exceptional service. The Art Deco-inspired dining room adds to the grandeur of the experience.",
-       country:"USA",
-       city:"NEW York",
-       address:"11 Madison Ave, New York, NY 10010"
-
-    })
-    console.log('good')
-  }catch(error){
-    console.log(error,'firestore')
-  }
-}
-
-
-
-
-
-
-//historyFromFirestore()
-async function deleteData(id){
-  try{
-    await deleteDoc(doc(db,"historyT",id));
-    console.log('deleted!!');
-    getDocs();
-  } catch(error) {
-    console.log(error,'deleteHistory');
-  }
-}
-
-async function showHistory() {
-  try {
-    const quertSnapshot = await getDocs(collection(db, "historyT"));
-    const historyHTMLArray = quertSnapshot.docs.map(doc => {
-      const data = doc.data();
-      return `
-        <ul>
-          <li>${doc.id}</li>
-          <li>${data.name}</li>
-          <li>${data.address}</li>
-          <li>${data.description}</li>
-          <button class="delBtn" onclick="deleteData('${doc.id}')">Delete</button>
-          <button class="updateBtn" onclick="updateData('${doc.id}')">Update</button>
-        </ul>
-      `;
-    });
-    const historyHTML = historyHTMLArray.join(""); // 배열을 문자열로 결합
-    document.getElementById("showHisDiv").innerHTML = historyHTML;
-  } catch (error) {
-    console.log(error, 'getHistory');
-  }
-}
-
-
-
-
-
-
-
-showHistory()
 
 
 postJSON(data);

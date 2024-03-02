@@ -41,6 +41,7 @@
         </div>
       </nav>
     </header>
+    <!--main part start-->
     <div class="img-area">
       <div id="demo" class="carousel slide" data-bs-ride="carousel" data-bs-interval="12000">
         <div class="carousel-indicators">
@@ -114,6 +115,7 @@
         </div>
       </div>
     </div>
+    <!--main part end-->
     <h3 class="section-name">Recommendation</h3>
     <section class="slider-container">
       <div class="container">
@@ -240,21 +242,37 @@
         <div class="swiper card_slider">
           <div class="swiper-wrapper">
             <div class="swiper-slide">
-              <div class="img_box">
+              <div class="img_box img_box-deco">
                 <img src="./image-files/hawaiiPhoto.jpg" alt="maui" srcset="" />
-                <div class="overlay">
+                <!--이 부분이 달라-->
+                <div class="overlay overlay-deco">
                   <div class="slide-content">
-                    <div class="weather-info">Temperature</div>
-                    <div class="description">Description</div>
+                    <div id="weather-container"></div>
                   </div>
                 </div>
+                <!--이 부분이 달라-->
                 <div class="slide-title">Hawaii</div>
                 <div class="slide-subtitle">USA</div>
               </div>
             </div>
             <div class="swiper-slide">
-              <div class="img_box">
+              <div class="img_box img_box-deco">
                 <img src="./image-files/seoulPhoto.jpg" alt="seoul" srcset="" />
+                <!--수정할 부분-->
+                <div class="overlay overlay-deco">
+                  <div class="slide-content">
+                    <ul class="weather-info-deco weather-hover-color">
+                      Temperature
+                    </ul>
+                    <li id="weather-info info-1"></li>
+                    <ul class="weather-hover-color">
+                      Description
+                    </ul>
+                    <li id="description info-1"></li>
+                    <img id="icon info-1" scr="" />
+                  </div>
+                </div>
+                <!--수정할 부분-->
                 <div class="slide-title">Seoul</div>
                 <div class="slide-subtitle">Korea</div>
               </div>
@@ -578,5 +596,6 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="script.js"></script>
     <script src="script-weather.js"></script>
+    <script src="script-weather-card.js"></script>
   </body>
 </html>

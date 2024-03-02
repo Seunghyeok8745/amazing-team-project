@@ -264,18 +264,45 @@ div .container {
   justify-content: center;
   flex-direction: column;
   color: white;
+  border-radius: 15px;
+}
+
+/*weather hover part*/
+.overlay-deco {
+  background-color: rgba(83, 83, 83, 0.668);
+  cursor: pointer;
+}
+.slide-content {
+  padding: 0px;
+  margin: 0px;
 }
 .img_box:hover .overlay {
   opacity: 1;
 }
-.weather-info,
-.description {
-  margin-top: 10px;
+#weather-info,
+#description {
+  margin: 10px;
+  margin-bottom: 15px;
+  font-size: 25px;
 }
-
+.weather-info-deco {
+  padding-top: 20px;
+}
+.weather-hover-color {
+  font-size: 25px;
+}
+.icon {
+  padding-left:5px;
+  border: 1px solid white;
+  border-radius: 50%;
+}
 .img_box:hover {
   filter: brightness(68%);
 }
+.img_box-deco:hover {
+  filter: brightness(100%);
+}
+
 /* recommendation and wishlist setting */
 .card .image-box img {
   height: 280px;
@@ -294,6 +321,7 @@ div .container {
 .card p {
   text-align: left;
 }
+
 /*notification*/
 .noti-container {
   height: 95vh;

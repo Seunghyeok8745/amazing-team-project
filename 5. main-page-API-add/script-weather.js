@@ -36,5 +36,19 @@ const getWeatherInfo = async (latitude,longitude) => {
     document.getElementById("location-area-2").innerHTML = `<id="location-area-2">location: ${location}</id=>`;
     document.getElementById("feelsLike-area-2").innerHTML = `<id="feelsLike-area-2">temperature: ${temperature}°</id=>`;
     document.getElementById("description-area-2").innerHTML = `<id="description-area-2">description: ${description}</id=>`;
+
+    latitude = 19.8987;
+    longitude = 155.6659;
+
+    document.getElementById("weather-info").innerHTML = `<li id="weather-info">: ${temperature}°</li>`;
+    document.getElementById("description").innerHTML = `<li id="description">: ${description}</li>`;
+    document.getElementById("icon").setAttribute(`src`,`https://openweathermap.org/img/wn/${icon}@2x.png`);
+
+    latitude = 37.5519;
+    longitude = 126.9918;
+
+    document.getElementById("weather-info info-1").innerHTML = `<li id="weather-info info-1">: ${temperature}°</li>`;
+    document.getElementById("description info-1").innerHTML = `<li id="description info-1">: ${description}</li>`;
+    document.getElementById("icon info-1").setAttribute(`src`,`https://openweathermap.org/img/wn/${icon}@2x.png`);
 }
 getWeatherInfo();

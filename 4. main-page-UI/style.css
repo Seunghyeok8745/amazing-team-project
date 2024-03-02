@@ -263,6 +263,7 @@ div .container {
   justify-content: center;
   flex-direction: column;
   color: white;
+  border-radius: 15px;
 }
 .img_box:hover .overlay {
   opacity: 1;

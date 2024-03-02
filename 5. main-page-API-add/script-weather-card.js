@@ -35,6 +35,20 @@ const weatherCardTemplate = (cityName, state, cityImage, temperature, weatherDes
 
 const insertWeatherCard = (cityName, state, cityImage, temperature, weatherDescription) => {
   weatherSliderContainer.innerHTML += weatherCardTemplate(cityName, state, cityImage, temperature, weatherDescription);
+
+  function updatePagination() {
+    const totalSlides = swiper.slides.length;
+    const totalPages = Math.ceil(totalSlides / 4);
+    const pagination = document.querySelector('.swiper-pagination');
+    const bullets = pagination.querySelectorAll('.swiper-pagination-bullet');
+  }
+
+  // 슬라이드 변경 시 페이지네이션 업데이트
+  swiper.on('slideChange', function () {
+    updatePagination();
+  });
+
+  // 초기 페이지네이션 설정
   updatePagination();
 };
 

@@ -9,8 +9,12 @@ const weatherSliderContainer = document.querySelector('#weather-slider-container
 
 const getCityImgae = async cityName => {
   const url = `${basesURL}/photo?city=${cityName}`;
+  console.log(`city image: ${url}`);
   const res = await fetch(url);
-  if (res.status / 100 !== 2) return './image-files/banffPhoto.jpg';
+  if (res.status / 100 !== 2) {
+    console.error(`failed to get image: ${url}, ${res.status}`);
+    return './image-files/banffPhoto.jpg';
+  }
   data = await res.json();
   return await data.photoURL;
 };
@@ -18,7 +22,9 @@ const getCityImgae = async cityName => {
 const weatherCardTemplate = (cityName, state, cityImage, temperature, weatherDescription) => {
   return `<div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 12" style="width: 239.75px; margin-right: 50px;">
   <div class="img_box img_box-deco">
-    <img src="${cityImage}" alt="maui" srcset="">
+    <div class="weather-city-image-container">
+      <img src="${cityImage}" alt="maui" srcset="">
+    </div>
     <!--이 부분이 달라-->
     <div class="overlay overlay-deco">
       <div class="slide-content">
@@ -125,7 +131,7 @@ async function getLatLong(city, country, cityImage) {
   const location = data.results[0].geometry.location;
   const latitude = location.lat;
   const longitude = location.lng;
-  cityImage = cityImage ?? (await getCityImgae(cityImage));
+  cityImage = cityImage ?? (await getCityImgae(city));
   getWeather(latitude, longitude, city, country, cityImage);
 }
 
@@ -135,9 +141,9 @@ const main = () => {
     { city: 'Jeju', image: './image-files/jejuIslandPhoto.jpg', country: 'Korea' },
     { city: 'kyoto', image: './image-files/kyotoPhoto.jpg', country: 'Japan' },
     { city: 'London', image: './image-files/englandPhoto.jpg', country: 'England' },
-    { city: 'Seattle', country: 'England' },
-    { city: 'Vancouver', country: 'England' },
-    { city: 'New York', country: 'England' },
+    { city: 'Seattle', country: 'USA' },
+    { city: 'Vancouver', country: 'Canada' },
+    { city: 'New York', country: 'USA' },
   ];
   cityNameList.forEach(city => getLatLong(city.city, city.country, city.image));
 };

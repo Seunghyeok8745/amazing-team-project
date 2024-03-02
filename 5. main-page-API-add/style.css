@@ -482,3 +482,14 @@ ul {
   display: absolute;
   top: -100px;
 }
+
+.weather-city-image-container {
+  height: 22.5rem;
+}
+
+.weather-city-image-container img {
+  height: inherit;
+  width: inherit;
+  /* todo: image resizing issue */
+  object-fit: cover;
+}

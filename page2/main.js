@@ -1,3 +1,38 @@
+const searchInput = document.querySelector('.search-input');
+const searchParam = new URLSearchParams(window.location.search);
+const origin = window.location.origin;
+const path = window.location.pathname;
+const originPath = `${origin}${path}`;
+
+const city = searchParam.has('city') ? searchParam.get('city') : '';
+const coutry = searchParam.has('coutry') ? searchParam.get('coutry') : '';
+const date = searchParam.has('date') ? searchParam.get('date') : '';
+
+const protocol = window.location.protocol;
+const hostname = window.location.hostname;
+const port = window.location.port;
+const basesURL = `${protocol}//${hostname}${port ? `:${port}` : ''}/.netlify/functions`;
+
+const getCurrentLocationByIp = async () => {
+  const url = `${basesURL}/currentLocation`;
+  console.log(`backend: ${url}`);
+  const res = await fetch(url);
+
+  //
+  if (res.status / 100 !== 2) {
+    console.error('cannot find the place by ip');
+    return '{}';
+  }
+
+  return await res.json();
+};
+
+const getCityLat = async cityName => {
+  const url = `${basesURL}/locationlat?city=${cityName}`;
+  console.log(`backend: ${url}`);
+  return fetch(url).then(res => res.json());
+};
+
 document.addEventListener('DOMContentLoaded', function () {
   const searchIcon = document.querySelector('.search-icon');
   const searchBox = document.querySelector('.search-box');
@@ -5,6 +40,17 @@ document.addEventListener('DOMContentLoaded', function () {
   searchIcon.addEventListener('click', function () {
     searchBox.classList.toggle('show');
   });
+
+  // if you want to know previous seach result
+  searchInput.value = city;
+});
+
+searchInput.addEventListener('keypress', event => {
+  if (event.key === 'Enter') {
+    const keyword = searchInput.value;
+    console.log(keyword);
+    window.open(`${originPath}?city=${keyword}`, '_self');
+  }
 });
 
 async function initMap() {
@@ -95,31 +141,36 @@ async function initMap() {
   };
   const map = new google.maps.Map(document.getElementById('map'), options);
 
-  // user location
-  if (navigator.geolocation) {
+  const drawMap = (latitude, longitude) => {
+    console.log(latitude, longitude);
+    const userLatLng = {
+      lat: latitude,
+      lng: longitude,
+    };
+
+    const image = new google.maps.MarkerImage('./pin.png', null, null, null, new google.maps.Size(60, 60));
+    const userMarker = new google.maps.Marker({
+      position: userLatLng,
+      map: map,
+      title: 'Your Location',
+    });
+
+    // center to user location
+    map.setCenter(userLatLng);
+  };
+
+  if (city) {
+    getCityLat(city).then(loc => drawMap(loc.latitude, loc.longitude));
+  } else if (navigator.geolocation) {
+    // user location
     navigator.geolocation.getCurrentPosition(
-      function (position) {
-        const userLatLng = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-        };
-
-        const image = new google.maps.MarkerImage("./pin.png", null, null, null, new google.maps.Size(60,60));
-        const userMarker = new google.maps.Marker({
-          position: userLatLng,
-          map: map,
-          title: 'Your Location',
-          icon: image
-        });
-
-        // center to user location
-        map.setCenter(userLatLng);
-      },
-      function () {
-        console.error('Error: The Geolocation service failed.');
+      position => drawMap(position.coords.latitude, position.coords.longitude),
+      () => {
+        getCurrentLocationByIp().then(data => drawMap(data.latitude, data.longitude));
       }
     );
   } else {
+    console.log(await getCurrentLocationByIp());
     console.error("Error: Your browser doesn't support geolocation.");
   }
 }

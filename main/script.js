@@ -1,3 +1,7 @@
+const userInputFieldList = document.querySelectorAll('.user-search-input');
+
+console.log('hello');
+
 const swiper = new Swiper('.card_slider', {
   direction: 'horizontal',
   slidesPerView: 4,
@@ -40,5 +44,17 @@ document.addEventListener('DOMContentLoaded', function () {
       this.querySelector('.slide-title').style.opacity = '1';
       this.querySelector('.slide-subtitle').style.opacity = '1';
     });
+  });
+});
+
+userInputFieldList.forEach(userInputField => {
+  console.log(userInputField.value);
+  userInputField.addEventListener('keypress', event => {
+    // console.log('enter pressed');
+    if (event.key === 'Enter') {
+      const keyword = userInputField.value;
+      console.log(keyword);
+      window.open(`../page2/index.html?city=${keyword}`, '_self');
+    }
   });
 });

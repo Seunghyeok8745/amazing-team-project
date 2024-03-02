@@ -11,7 +11,7 @@ export default async (req, context) => {
   return new Response(
     JSON.stringify({
       cityName,
-      photoURL: await getPhotoByName(cityName, mapApiKey),
+      ...(await getLocation(cityName, mapApiKey)),
     })
   );
 };
@@ -39,8 +39,8 @@ const getPhotoById = async (photoId, map_api_key) => {
  * @param {string} map_api_key google map api key
  * @returns the uri of the photoid or empty string if not found
  */
-const getPhotoByName = async (name, map_api_key) => {
-  const res = await fetch(`${GOOGLE_PLACE_BASE_URL}places:searchText`, {
+const getLocation = async (name, map_api_key) => {
+  return fetch(`${GOOGLE_PLACE_BASE_URL}places:searchText`, {
     method: 'POST',
     body: JSON.stringify({
       textQuery: name,
@@ -52,13 +52,13 @@ const getPhotoByName = async (name, map_api_key) => {
         'places.accessibilityOptions,places.formattedAddress,places.photos,places.allowsDogs,places.rating,places.userRatingCount,places.internationalPhoneNumber,places.editorialSummary,places.reviews,places.location',
       'Content-Type': 'application/json',
     },
-  });
-
-  const data = await res.json();
-  console.log(JSON.stringify(data));
-  const firstPlace = data?.places ? data.places[0] : null;
-  const firstPhoto = firstPlace?.photos ? firstPlace.photos[0] : '';
-
-  if (!!firstPhoto) return await getPhotoById(firstPhoto.name, map_api_key);
-  return '';
+  })
+    .then(res => res.json())
+    .then(data => data.places)
+    .then(data => data[0])
+    .then(data => ({
+      latitude: data.location.latitude,
+      longitude: data.location.longitude,
+    }))
+    .catch(error => console.log(`we got following error: {error}`));
 };

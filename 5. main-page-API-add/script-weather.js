@@ -1,54 +1,65 @@
 const API_KEY = `3b56745dd240621d3eaad2aac3d8a827`;
+const protocol = window.location.protocol;
+const hostname = window.location.hostname;
+const port = window.location.port;
+const basesURL = `${protocol}//${hostname}${port ? `:${port}` : ''}/.netlify/functions`;
 
-const success = (position) => {
-    //console.log(position);
-    const latitude = position.coords.latitude;
-    const longitude = position.coords.longitude;
-    //alert("Current location is " + latitude + " and, " + longitude);
-    getWeatherInfo(latitude,longitude);
-}
-const error = () => {
-    alert("Location can't be found");
-}
+const getCurrentLocationByIp = async () => {
+  const url = `${basesURL}/currentLocation`;
+  console.log(`backend: ${url}`);
+  const res = await fetch(url);
 
-const getWeatherInfo = async (latitude,longitude) => {
-    if(navigator.geolocation) // geolocation 을 지원한다면 위치를 요청한다. {
+  //
+  if (res.status / 100 !== 2) {
+    console.error('cannot find the place by ip');
+    return '{}';
+  }
+
+  return await res.json();
+};
+
+const success = position => {
+  //console.log(position);
+  const latitude = position.coords.latitude;
+  const longitude = position.coords.longitude;
+  //alert("Current location is " + latitude + " and, " + longitude);
+  getWeatherInfo(latitude, longitude);
+};
+const error = async () => {
+  console.wraning('location permission needed for the precise weather info');
+};
+
+const getWeatherInfo = async (latitude, longitude) => {
+  console.log('recursive called: getWeatherInfo');
+  if (navigator.geolocation)
+    // geolocation 을 지원한다면 위치를 요청한다. {
     navigator.geolocation.getCurrentPosition(success, error);
 
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`);
-    //함수를 함수의 인수로 전달하고, 필요하다면 인수로 전달한 그 함수를 "나중에 호출(called back)"하는 것이 콜백 함수의 개념
-    const data = await response.json();
-    //console.log(data);
+  const response = await fetch(
+    `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`
+  );
+  //함수를 함수의 인수로 전달하고, 필요하다면 인수로 전달한 그 함수를 "나중에 호출(called back)"하는 것이 콜백 함수의 개념
+  const data = await response.json();
+  //console.log(data);
 
-    const location = data.name;
-    const temperature = Math.round(data.main.temp);
-    const description = data.weather[0].description;
-    const icon = data.weather[0].icon;
-    
-    document.getElementById("location-area").innerHTML = `<id="location-area">location: ${location}</id=>`;
-    document.getElementById("feelsLike-area").innerHTML = `<id="feelsLike-area">temperature: ${temperature}°</id=>`;
-    document.getElementById("description-area").innerHTML = `<id="description-area">description: ${description}</id=>`;
+  const location = data.name;
+  const temperature = Math.round(data.main.temp);
+  const description = data.weather[0].description;
+  const icon = data.weather[0].icon;
 
-    document.getElementById("location-area-1").innerHTML = `<id="location-area-1">location: ${location}</id=>`;
-    document.getElementById("feelsLike-area-1").innerHTML = `<id="feelsLike-area-1">temperature: ${temperature}°</id=>`;
-    document.getElementById("description-area-1").innerHTML = `<id="description-area-1">description: ${description}</id=>`;
+  document.getElementById('location-area').innerHTML = `<id="location-area">location: ${location}</id=>`;
+  document.getElementById('feelsLike-area').innerHTML = `<id="feelsLike-area">temperature: ${temperature}°</id=>`;
+  document.getElementById('description-area').innerHTML = `<id="description-area">description: ${description}</id=>`;
 
-    document.getElementById("location-area-2").innerHTML = `<id="location-area-2">location: ${location}</id=>`;
-    document.getElementById("feelsLike-area-2").innerHTML = `<id="feelsLike-area-2">temperature: ${temperature}°</id=>`;
-    document.getElementById("description-area-2").innerHTML = `<id="description-area-2">description: ${description}</id=>`;
+  document.getElementById('location-area-1').innerHTML = `<id="location-area-1">location: ${location}</id=>`;
+  document.getElementById('feelsLike-area-1').innerHTML = `<id="feelsLike-area-1">temperature: ${temperature}°</id=>`;
+  document.getElementById('description-area-1').innerHTML =
+    `<id="description-area-1">description: ${description}</id=>`;
 
-    latitude = 19.8987;
-    longitude = 155.6659;
+  document.getElementById('location-area-2').innerHTML = `<id="location-area-2">location: ${location}</id=>`;
+  document.getElementById('feelsLike-area-2').innerHTML = `<id="feelsLike-area-2">temperature: ${temperature}°</id=>`;
+  document.getElementById('description-area-2').innerHTML =
+    `<id="description-area-2">description: ${description}</id=>`;
+};
 
-    document.getElementById("weather-info").innerHTML = `<li id="weather-info">: ${temperature}°</li>`;
-    document.getElementById("description").innerHTML = `<li id="description">: ${description}</li>`;
-    document.getElementById("icon").setAttribute(`src`,`https://openweathermap.org/img/wn/${icon}@2x.png`);
-
-    latitude = 37.5519;
-    longitude = 126.9918;
-
-    document.getElementById("weather-info info-1").innerHTML = `<li id="weather-info info-1">: ${temperature}°</li>`;
-    document.getElementById("description info-1").innerHTML = `<li id="description info-1">: ${description}</li>`;
-    document.getElementById("icon info-1").setAttribute(`src`,`https://openweathermap.org/img/wn/${icon}@2x.png`);
-}
-getWeatherInfo();
+getCurrentLocationByIp().then(data => getWeatherInfo(data?.latitude, data?.longitude));

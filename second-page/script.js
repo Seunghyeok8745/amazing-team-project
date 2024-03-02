@@ -104,10 +104,12 @@ async function initMap() {
           lng: position.coords.longitude,
         };
 
+        const image = new google.maps.MarkerImage("./pin.png", null, null, null, new google.maps.Size(60,60));
         const userMarker = new google.maps.Marker({
           position: userLatLng,
           map: map,
           title: 'Your Location',
+          icon: image
         });
 
         // center to user location

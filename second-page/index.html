@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -24,77 +24,82 @@
     <script src="https://kit.fontawesome.com/ebf5d5da1d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="stylesheet" href="main2.css" />
+    <link rel="stylesheet" href="style.css" />
   </head>
-    <body>
-      <header class="header-area">
-        <div class="header-logo-area">
-          <div class="header-title">ALL THE RAGE</div>
-          <div class="header-title-sub">Your Trip Is All The Rage</div>
-        </div>
-        <nav class="navBar">
-          <div class="navBarContainer">
-            <div class="search-box">
-              <input type="text" class="search-input" placeholder="Enter City, State, Country">
-            </div>
-            <a href="#" class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></a>
-            <a href="#" class="logIn">Weather</a>
-            <a href="#" class="logIn">Location</a>
-            <a href="#" class="logIn login-deco">About</a>
-            <a href="#" class="login-icon"><i class="fa-solid fa-user"></i></a>
+  <body>
+    <header class="header-area">
+      <div class="header-logo-area">
+        <div class="header-title">ALL THE RAGE</div>
+        <div class="header-title-sub">Your Trip Is All The Rage</div>
+      </div>
+      <nav class="navBar">
+        <div class="navBarContainer">
+          <div class="search-box">
+            <input type="text" class="search-input" placeholder="Enter City, State, Country" />
           </div>
-        </nav>
-      </header>
+          <a href="#" class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></a>
+          <a href="#" class="logIn">Weather</a>
+          <a href="#" class="logIn">Location</a>
+          <a href="#" class="logIn login-deco">About</a>
+          <a href="#" class="login-icon"><i class="fa-solid fa-user"></i></a>
+        </div>
+      </nav>
+    </header>
     <main class="main">
+      <!--weather api 넣는 곳!-->
       <div class="profile-status">
-          <div class="name-area">
-            <h4><i class="fa-solid fa-user"></i> Hi, Jane</h4>
-            </div>
-          <div class="location-indicator">
-            <h2>Your location is <h2 class="location-underline">Vancouver</h2></h2>
-             </div>
-             <div class="weather-indicator">
-              <h2>It's going to <br> <h2 class="weather-underline">Rain</h2> <h2>where you are</h2>
-               </div>
+        <div class="name-area">
+          <h4><i class="fa-solid fa-user"></i> Hi, Jane</h4>
+        </div>
+        <div class="location-indicator">
+          <h2>
+            Your location is
+            <h2 id="location-underline">Vancouver</h2>
+          </h2>
+        </div>
+        <div class="weather-indicator">
+          <h2>It's going to</h2>
+          <h2 id="weather-underline">Rain</h2>
+          <h2>where you are</h2>
         </div>
       </div>
-      <div id="map" class="map-area">
-      </div>
+      <!--weather api 넣는 곳!-->
+      <div id="map" class="map-area"></div>
     </main>
     <section class="main2">
-      <h3>Recommendation from your smart AI </h3>
+      <h3>Recommendation from your smart AI</h3>
       <ul>
-       <li>Restaurants</li>
+        <li>Restaurants</li>
       </ul>
       <div class="gpt-info">
-      <div class="image-gpt"></div>
-      <div class="text-gpt"></div>
-    </div>
-    <div class="gpt-info">
-      <div class="image-gpt"></div>
-      <div class="text-gpt"></div>
-    </div>
-    <div class="gpt-info">
-      <div class="image-gpt"></div>
-      <div class="text-gpt"></div>
-    </div>
-    <ul>
-      <li>Tourist Attraction</li>
-     </ul>
-     <div class="gpt-info">
-     <div class="image-gpt"></div>
-     <div class="text-gpt"></div>
-   </div>
-   <div class="gpt-info">
-     <div class="image-gpt"></div>
-     <div class="text-gpt"></div>
-   </div>
-   <div class="gpt-info">
-     <div class="image-gpt"></div>
-     <div class="text-gpt"></div>
-   </div>
+        <div class="image-gpt"></div>
+        <div class="text-gpt"></div>
+      </div>
+      <div class="gpt-info">
+        <div class="image-gpt"></div>
+        <div class="text-gpt"></div>
+      </div>
+      <div class="gpt-info">
+        <div class="image-gpt"></div>
+        <div class="text-gpt"></div>
+      </div>
+      <ul>
+        <li>Tourist Attraction</li>
+      </ul>
+      <div class="gpt-info">
+        <div class="image-gpt"></div>
+        <div class="text-gpt"></div>
+      </div>
+      <div class="gpt-info">
+        <div class="image-gpt"></div>
+        <div class="text-gpt"></div>
+      </div>
+      <div class="gpt-info">
+        <div class="image-gpt"></div>
+        <div class="text-gpt"></div>
+      </div>
     </section>
-    <br>
+    <br />
     <!-- footer -->
     <div class="footer">
       <div class="footer-container">
@@ -124,10 +129,7 @@
         <div class="second-line">
           <div class="copyRight-area">
             <span class="footer-brand-name">All the rage</span>
-            <span class="footer-copyRight-area"
-              >Copyright &#169; 2024 All the rage, Inc. All rights
-              reserved.</span
-            >
+            <span class="footer-copyRight-area">Copyright &#169; 2024 All the rage, Inc. All rights reserved.</span>
           </div>
           <div class="appStore-area">
             <image src="./image-files/apple-logo.png" class="apple-logo" />
@@ -137,10 +139,11 @@
       </div>
     </div>
     <script
-    defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALWZZ0fVimoOuPlaSO2aY441LE7IuOYFQ&callback=initMap"
-  ></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-    <script src="main2.js"></script>
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALWZZ0fVimoOuPlaSO2aY441LE7IuOYFQ&callback=initMap"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="script.js"></script>
+    <script src="script-weather.js"></script>
   </body>
 </html>

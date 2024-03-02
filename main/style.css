@@ -485,6 +485,7 @@ ul {
 
 .weather-city-image-container {
   height: 22.5rem;
+  width: 100%;
 }
 
 .weather-city-image-container img {

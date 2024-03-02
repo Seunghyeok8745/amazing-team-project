@@ -19,7 +19,11 @@ body {
   font-style: normal;
   letter-spacing: 0px;
   margin-left: 4.5vw;
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 400;
+
 }
+
 /* header */
 .header-area {
   display: flex;
@@ -442,9 +446,13 @@ ul {
   height: 51px;
 }
 
+
+
+
 .card_slider {
   padding-top: 20px;
 }
 .swiper {
   margin-left: 0.5vw;
 }
+

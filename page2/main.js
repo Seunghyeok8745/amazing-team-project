@@ -1,3 +1,10 @@
+const searchInput = document.querySelector('.search-input');
+const searchParam = new URLSearchParams(window.location.search);
+
+const city = searchParam.has('city') ? searchParam.get('city') : '';
+const coutry = searchParam.has('coutry') ? searchParam.get('coutry') : '';
+const date = searchParam.has('date') ? searchParam.get('date') : '';
+
 document.addEventListener('DOMContentLoaded', function () {
   const searchIcon = document.querySelector('.search-icon');
   const searchBox = document.querySelector('.search-box');
@@ -5,6 +12,9 @@ document.addEventListener('DOMContentLoaded', function () {
   searchIcon.addEventListener('click', function () {
     searchBox.classList.toggle('show');
   });
+
+  // if you want to know previous seach result
+  // searchInput.value = city;
 });
 
 async function initMap() {

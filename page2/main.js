@@ -141,7 +141,7 @@ async function initMap() {
   };
   const map = new google.maps.Map(document.getElementById('map'), options);
 
-  const drawMap = (latitude, longitude) => {
+  const drawMap = (latitude, longitude, markerList) => {
     console.log(latitude, longitude);
     const userLatLng = {
       lat: latitude,
@@ -155,8 +155,17 @@ async function initMap() {
       title: 'Your Location',
     });
 
+    //example
+    // markerList.forEach(
+    //   marker =>
+    //     new google.maps.Marker({ map, title: marker.title, position: { lat: marker.latitude, lng: marker.longitude } })
+    // );
+
     // center to user location
     map.setCenter(userLatLng);
+
+    // weather rendering
+    getWeatherInfo(latitude, longitude);
   };
 
   if (city) {

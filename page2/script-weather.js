@@ -1,24 +1,26 @@
 const API_KEY = `3b56745dd240621d3eaad2aac3d8a827`;
 
-const getWeatherInfo = async (lat,lon) => {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          function (position) {
-            const currentLocation = {
-              lat: position.coords.latitude,
-              lon: position.coords.longitude,
-            };
-            console.log(currentLocation);
-        })}
+const success = position => {
+  const latitude = position.coords.latitude;
+  const longitude = position.coords.longitude;
+  getWeatherInfo(latitude, longitude);
+};
+const error = async () => {
+  console.warning('location permission needed for the precise weather info');
+};
 
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`);
-    const data = await response.json();
-    console.log(data);
+const getWeatherInfo = async (latitude, longitude) => {
+  console.log('recursive called: getWeatherInfo');
+  if (navigator.geolocation) navigator.geolocation.getCurrentPosition(success, error);
 
-    const location = data.name;
-    const description = data.weather[0].description;
+  const response = await fetch(
+    `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`
+  );
+  const data = await response.json();
 
-    document.getElementById("location-underline").innerHTML = `<h2 id="location-underline">${location}</h2>`;
-    document.getElementById("weather-underline").innerHTML = `<h2 id="weather-underline">${description}</h2>`;
-}
-getWeatherInfo();
+  const location = data.name;
+  const description = data.weather[0].description;
+
+  document.getElementById('location-underline').innerHTML = `<h2 id="location-underline">${location}</h2>`;
+  document.getElementById('weather-underline').innerHTML = `<h2 id="weather-underline">${description}</h2>`;
+};

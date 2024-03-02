@@ -33,7 +33,7 @@ body {
 input {
   position: absolute;
   height: 33px;
-  width: 26em;
+  width: 16em;
   margin-right: 25px;
   border-radius: 5px;
   border: 1px solid #e2e0e0c7;
@@ -47,13 +47,31 @@ input {
 .searchContainer {
   position: relative;
 }
+<<<<<<< HEAD:4. main-page-UI/main.css
+.searchContainer input {
+  position: absolute;
+  top: -230px;
+  background-color: white;
+  border-radius: 10px;
+  opacity: 60%;
+  width: 10vw;
+  height: 3vh;
+}
+=======
+>>>>>>> a7903ef6732914de2da1834b583b6d492b76f194:main.css
 .searchContainer input[type='text'] {
   padding-left: 40px;
   font-size: 17px;
   color: white;
 }
 .searchContainer input[type='text']::placeholder {
+<<<<<<< HEAD:4. main-page-UI/main.css
+  color: black;
+  font-size:13px;
+
+=======
   color: white;
+>>>>>>> a7903ef6732914de2da1834b583b6d492b76f194:main.css
 }
 .searchContainer button {
   position: absolute;
@@ -65,10 +83,30 @@ input {
   font-size: 16px;
   opacity: 100%;
   z-index: 100;
+<<<<<<< HEAD:4. main-page-UI/main.css
+  color: rgb(30, 30, 30);
+  /* 아래부분 조졍했습니다. */
+  right: 33.7em;
+  top: -230px;   
+  border-left:1px solid gray;
+}
+/* //////////////////////////inputs */
+input{
+  margin:0;
+=======
   color: white;
   left: -9.5em;
   top: -11.8em;
+>>>>>>> a7903ef6732914de2da1834b583b6d492b76f194:main.css
 }
+.input-group {
+  width:55%;
+  text-align: cenetr;
+}
+.input-group input[type=text]
+
+/* //////////////////////// */
+
 /* navBar button */
 .navBar a {
   width: 79px;
@@ -398,3 +436,21 @@ ul {
   width: 134px;
   height: 51px;
 }
+<<<<<<< HEAD:4. main-page-UI/main.css
+
+
+
+
+.card_slider {
+  padding-top: 20px;
+}
+.swiper {
+  margin-left: 0.5vw;
+}
+
+
+.name1{
+  size:10px;
+}
+=======
+>>>>>>> a7903ef6732914de2da1834b583b6d492b76f194:main.css

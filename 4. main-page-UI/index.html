@@ -24,7 +24,7 @@
     <script src="https://kit.fontawesome.com/ebf5d5da1d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <header class="header-area">
@@ -51,15 +51,22 @@
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img class="d-block" src="./image-files/main1.jpg" alt="First slide" />
-            <div class="carousel-caption d-md-block">
+            <div id="headerLeft" class="carousel-caption d-md-block">
               <h1>
                 Ask our smart AI<br />
                 for your trip plans!
               </h1>
               <a href="./page2/index2.html" class="click-button">Click and check it</a>
               <div class="searchContainer">
-                <button><i class="fa-solid fa-magnifying-glass"></i></button>
-                <input type="text" placeholder="Search" />
+               
+                <div class="input-group">
+                
+                  <input id="country" placeholder="Country" type="text" aria-label="First name" class="form-control">
+                  <input id="city" placeholder="City" type="text" aria-label="Last name" class="form-control">
+                  <input id="date" placeholder="22Date" type="text" aria-label="Last name" class="form-control">
+                
+                </div>
+                <button onclick="postJSON()"><i class="fa-solid fa-magnifying-glass"></i></button>
               </div>
               <div class="weatherBox boxDeco">
                 <h5>How's the weather today?</h5>
@@ -79,8 +86,15 @@
                 </h1>
                 <a href="#" class="click-button">Click and check it</a>
                 <div class="searchContainer">
-                  <button><i class="fa-solid fa-magnifying-glass"></i></button>
-                  <input type="text" placeholder="Search" />
+               
+                  <div class="input-group">
+                   
+                    <input id="country" placeholder="Country" type="text" aria-label="First name" class="form-control">
+                    <input id="city" placeholder="City" type="text" aria-label="Last name" class="form-control">
+                    <input id="date" placeholder="Date" type="text" aria-label="Last name" class="form-control">
+                  
+                  </div>
+                  <button id="searchBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </div>
                 <div class="weatherBox">
                   <h5>How's the weather today?</h5>
@@ -100,8 +114,15 @@
               </h1>
               <a href="#" class="click-button">Click and check it</a>
               <div class="searchContainer">
+               
+                <div class="input-group">
+                 
+                  <input placeholder="Country" type="text" aria-label="First name" class="form-control">
+                  <input placeholder="City" type="text" aria-label="Last name" class="form-control">
+                  <input placeholder="Date" type="text" aria-label="Last name" class="form-control">
+                
+                </div>
                 <button><i class="fa-solid fa-magnifying-glass"></i></button>
-                <input type="text" placeholder="Search" />
               </div>
               <div class="weatherBox">
                 <h5>How's the weather today?</h5>
@@ -117,108 +138,22 @@
     <h3 class="section-name">Recommendation</h3>
     <section class="slider-container">
       <div class="container">
+
         <div class="swiper card_slider">
-          <div class="swiper-wrapper">
+          <div id="recom" class="swiper-wrapper">
+
             <div class="card swiper-slide">
               <div class="image-box">
                 <img src="./image-files/main2.jpg" alt="" />
                 <h3 class="name">Vancouver</h3>
                 <p class="content-demo">
-                  A bustling west coast seaport in British Columbia, is among Canada's densest, most ethnically diverse
+                  A222222 bustling west coast seaport in British Columbia, is among Canada's densest, most ethnically diverse
                   cities.
                 </p>
               </div>
             </div>
-            <div class="card swiper-slide">
-              <div class="image-box">
-                <img src="./image-files/wishlist-1.jpeg" alt="" />
-                <h3 class="name">Vancouver</h3>
-                <p class="content-demo">
-                  A bustling west coast seaport in British Columbia, is among Canada's densest, most ethnically diverse
-                  cities.
-                </p>
-              </div>
-            </div>
-            <div class="card swiper-slide">
-              <div class="image-box">
-                <img src="./image-files/main2.jpg" alt="" />
-                <h3 class="name">Vancouver</h3>
-                <p class="content-demo">
-                  A bustling west coast seaport in British Columbia, is among Canada's densest, most ethnically diverse
-                  cities.
-                </p>
-              </div>
-            </div>
-            <div class="card swiper-slide">
-              <div class="image-box">
-                <img src="./image-files/wishlist-1.jpeg" alt="" />
-                <h3 class="name">Vancouver</h3>
-                <p class="content-demo">
-                  A bustling west coast seaport in British Columbia, is among Canada's densest, most ethnically diverse
-                  cities.
-                </p>
-              </div>
-            </div>
-            <div class="card swiper-slide">
-              <div class="image-box">
-                <img src="./image-files/main2.jpg" alt="" />
-                <h3 class="name">Vancouver</h3>
-                <p class="content-demo">
-                  A bustling west coast seaport in British Columbia, is among Canada's densest, most ethnically diverse
-                  cities.
-                </p>
-              </div>
-            </div>
-            <div class="card swiper-slide">
-              <div class="image-box">
-                <img src="./image-files/main2.jpg" alt="" />
-                <h3 class="name">Vancouver</h3>
-                <p class="content-demo">
-                  A bustling west coast seaport in British Columbia, is among Canada's densest, most ethnically diverse
-                  cities.
-                </p>
-              </div>
-            </div>
-            <div class="card swiper-slide">
-              <div class="image-box">
-                <img src="./image-files/main2.jpg" alt="" />
-                <h3 class="name">Vancouver</h3>
-                <p class="content-demo">
-                  A bustling west coast seaport in British Columbia, is among Canada's densest, most ethnically diverse
-                  cities.
-                </p>
-              </div>
-            </div>
-            <div class="card swiper-slide">
-              <div class="image-box">
-                <img src="./image-files/main2.jpg" alt="" />
-                <h3 class="name">Vancouver</h3>
-                <p class="content-demo">
-                  A bustling west coast seaport in British Columbia, is among Canada's densest, most ethnically diverse
-                  cities.
-                </p>
-              </div>
-            </div>
-            <div class="card swiper-slide">
-              <div class="image-box">
-                <img src="./image-files/main2.jpg" alt="" />
-                <h3 class="name">Vancouver</h3>
-                <p class="content-demo">
-                  A bustling west coast seaport in British Columbia, is among Canada's densest, most ethnically diverse
-                  cities.
-                </p>
-              </div>
-            </div>
-            <div class="card swiper-slide">
-              <div class="image-box">
-                <img src="./image-files/main2.jpg" alt="" />
-                <h3 class="name">Vancouver</h3>
-                <p class="content-demo">
-                  A bustling west coast seaport in British Columbia, is among Canada's densest, most ethnically diverse
-                  cities.
-                </p>
-              </div>
-            </div>
+
+
             <div class="card swiper-slide">
               <div class="image-box">
                 <img src="./image-files/main2.jpg" alt="" />
@@ -252,6 +187,7 @@
                 <div class="slide-subtitle">USA</div>
               </div>
             </div>
+
             <div class="swiper-slide">
               <div class="img_box">
                 <img src="./image-files/seoulPhoto.jpg" alt="seoul" srcset="" />
@@ -259,6 +195,7 @@
                 <div class="slide-subtitle">Korea</div>
               </div>
             </div>
+
             <div class="swiper-slide">
               <div class="img_box">
                 <img src="./image-files/kyotoPhoto.jpg" alt="kyoto" srcset="" />
@@ -266,6 +203,7 @@
                 <div class="slide-subtitle">Japan</div>
               </div>
             </div>
+
             <div class="swiper-slide">
               <div class="img_box">
                 <img src="./image-files/vietnamPhoto.jpg" alt="vietnam" srcset="" />
@@ -308,6 +246,7 @@
       <div class="container">
         <div class="swiper card_slider">
           <div class="swiper-wrapper">
+
             <div class="swiper-slide">
               <div class="img_box">
                 <img src="./image-files/montrealPhoto.jpg" alt="montreal" srcset="" />
@@ -315,6 +254,7 @@
                 <div class="slide-subtitle">Canada</div>
               </div>
             </div>
+
             <div class="swiper-slide">
               <div class="img_box">
                 <img src="./image-files/francePhoto.jpg" alt="france" srcset="" />
@@ -322,6 +262,7 @@
                 <div class="slide-subtitle">France</div>
               </div>
             </div>
+
             <div class="swiper-slide">
               <div class="img_box">
                 <img src="./image-files/jejuIslandPhoto.jpg" alt="jeju" srcset="" />
@@ -329,6 +270,7 @@
                 <div class="slide-subtitle">Korea</div>
               </div>
             </div>
+
             <div class="swiper-slide">
               <div class="img_box">
                 <img src="./image-files/englandPhoto.jpg" alt="uk" srcset="" />
@@ -336,6 +278,7 @@
                 <div class="slide-subtitle">England</div>
               </div>
             </div>
+
             <div class="swiper-slide">
               <div class="img_box">
                 <img src="./image-files/banffPhoto.jpg" alt="banff" srcset="" />
@@ -346,36 +289,43 @@
                 <img src="./image-files/banffPhoto.jpg" alt="banff" srcset="" />
               </div>
             </div>
+
             <div class="swiper-slide">
               <div class="img_box">
                 <img src="./image-files/banffPhoto.jpg" alt="banff" srcset="" />
               </div>
             </div>
+
             <div class="swiper-slide">
               <div class="img_box">
                 <img src="./image-files/banffPhoto.jpg" alt="banff" srcset="" />
               </div>
             </div>
+
             <div class="swiper-slide">
               <div class="img_box">
                 <img src="./image-files/banffPhoto.jpg" alt="banff" srcset="" />
               </div>
             </div>
+
             <div class="swiper-slide">
               <div class="img_box">
                 <img src="./image-files/banffPhoto.jpg" alt="banff" srcset="" />
               </div>
             </div>
+
             <div class="swiper-slide">
               <div class="img_box">
                 <img src="./image-files/banffPhoto.jpg" alt="banff" srcset="" />
               </div>
             </div>
+
             <div class="swiper-slide">
               <div class="img_box">
                 <img src="./image-files/banffPhoto.jpg" alt="banff" srcset="" />
               </div>
             </div>
+            
           </div>
           <div class="swiper-pagination"></div>
         </div>
@@ -562,5 +512,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="script.js"></script>
+    <script type="module" src="showList.js" defer></script>
+    <script type="module" src="../app.js" defer></script>
   </body>
 </html>
+

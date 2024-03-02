@@ -11,4 +11,16 @@ const getRoute = async () => {
   return data;
 };
 
+export const getCurrentLocationByIp = async () => {
+  const url = `${basesURL}/currentLocation`;
+  const res = await fetch(url);
+
+  //
+  if (data.status / 100 !== 2) {
+    new Error('cannot call the backend');
+  }
+
+  return await res.json();
+};
+
 getRoute();

@@ -148,6 +148,7 @@ async function initMap() {
       lng: longitude,
     };
 
+    const image = new google.maps.MarkerImage('./pin.png', null, null, null, new google.maps.Size(60, 60));
     const userMarker = new google.maps.Marker({
       position: userLatLng,
       map: map,

@@ -9,8 +9,12 @@ const weatherSliderContainer = document.querySelector('#weather-slider-container
 
 const getCityImgae = async cityName => {
   const url = `${basesURL}/photo?city=${cityName}`;
+  console.log(`city image: ${url}`);
   const res = await fetch(url);
-  if (res.status / 100 !== 2) return './image-files/banffPhoto.jpg';
+  if (res.status / 100 !== 2) {
+    console.error(`failed to get image: ${url}, ${res.status}`);
+    return './image-files/banffPhoto.jpg';
+  }
   data = await res.json();
   return await data.photoURL;
 };
@@ -18,7 +22,9 @@ const getCityImgae = async cityName => {
 const weatherCardTemplate = (cityName, state, cityImage, temperature, weatherDescription) => {
   return `<div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 12" style="width: 239.75px; margin-right: 50px;">
   <div class="img_box img_box-deco">
-    <img src="${cityImage}" alt="maui" srcset="">
+    <div class="weather-city-image-container">
+      <img src="${cityImage}" alt="maui" srcset="">
+    </div>
     <!--이 부분이 달라-->
     <div class="overlay overlay-deco">
       <div class="slide-content">
@@ -36,17 +42,39 @@ const weatherCardTemplate = (cityName, state, cityImage, temperature, weatherDes
 const insertWeatherCard = (cityName, state, cityImage, temperature, weatherDescription) => {
   weatherSliderContainer.innerHTML += weatherCardTemplate(cityName, state, cityImage, temperature, weatherDescription);
 
+  const swiper = new Swiper('.card_slider', {
+    direction: 'horizontal',
+    slidesPerView: 4,
+    slidesPerGroup: 4,
+    spaceBetween: 50,
+    loop: false,
+    speed: 1000,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    breakpoints: {
+      320: {
+        slidesPerView: 1,
+      },
+      480: {
+        slidesPerView: 2,
+      },
+      768: {
+        slidesPerView: 3,
+      },
+      1200: {
+        slidesPerView: 4,
+      },
+    },
+  });
+
   function updatePagination() {
-    const totalSlides = swiper.slides.length;
+    const totalSlides = swiper.length;
     const totalPages = Math.ceil(totalSlides / 4);
     const pagination = document.querySelector('.swiper-pagination');
     const bullets = pagination.querySelectorAll('.swiper-pagination-bullet');
   }
-
-  // 슬라이드 변경 시 페이지네이션 업데이트
-  swiper.on('slideChange', function () {
-    updatePagination();
-  });
 
   // 초기 페이지네이션 설정
   updatePagination();
@@ -103,7 +131,7 @@ async function getLatLong(city, country, cityImage) {
   const location = data.results[0].geometry.location;
   const latitude = location.lat;
   const longitude = location.lng;
-  cityImage = cityImage ?? (await getCityImgae(cityImage));
+  cityImage = cityImage ?? (await getCityImgae(city));
   getWeather(latitude, longitude, city, country, cityImage);
 }
 
@@ -113,9 +141,9 @@ const main = () => {
     { city: 'Jeju', image: './image-files/jejuIslandPhoto.jpg', country: 'Korea' },
     { city: 'kyoto', image: './image-files/kyotoPhoto.jpg', country: 'Japan' },
     { city: 'London', image: './image-files/englandPhoto.jpg', country: 'England' },
-    { city: 'Seattle', country: 'England' },
-    { city: 'Vancouver', country: 'England' },
-    { city: 'New York', country: 'England' },
+    { city: 'Seattle', country: 'USA' },
+    { city: 'Vancouver', country: 'Canada' },
+    { city: 'New York', country: 'USA' },
   ];
   cityNameList.forEach(city => getLatLong(city.city, city.country, city.image));
 };

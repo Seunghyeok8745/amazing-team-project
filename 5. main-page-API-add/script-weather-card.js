@@ -42,6 +42,33 @@ const weatherCardTemplate = (cityName, state, cityImage, temperature, weatherDes
 const insertWeatherCard = (cityName, state, cityImage, temperature, weatherDescription) => {
   weatherSliderContainer.innerHTML += weatherCardTemplate(cityName, state, cityImage, temperature, weatherDescription);
 
+  const swiper = new Swiper('.card_slider', {
+    direction: 'horizontal',
+    slidesPerView: 4,
+    slidesPerGroup: 4,
+    spaceBetween: 50,
+    loop: false,
+    speed: 1000,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    breakpoints: {
+      320: {
+        slidesPerView: 1,
+      },
+      480: {
+        slidesPerView: 2,
+      },
+      768: {
+        slidesPerView: 3,
+      },
+      1200: {
+        slidesPerView: 4,
+      },
+    },
+  });
+
   function updatePagination() {
     const totalSlides = swiper.length;
     const totalPages = Math.ceil(totalSlides / 4);

@@ -490,5 +490,6 @@ ul {
 .weather-city-image-container img {
   height: inherit;
   width: inherit;
+  /* todo: image resizing issue */
   object-fit: cover;
 }

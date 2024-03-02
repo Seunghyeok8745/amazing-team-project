@@ -7,7 +7,7 @@ const apiKey = '3b56745dd240621d3eaad2aac3d8a827';
 
 const weatherSliderContainer = document.querySelector('#weather-slider-container');
 
-const getCityImgae = async cityName => {
+const getCityImgae = async (cityName) => {
   const url = `${basesURL}/photo?city=${cityName}`;
   console.log(`city image: ${url}`);
   const res = await fetch(url);
@@ -137,13 +137,18 @@ async function getLatLong(city, country, cityImage) {
 
 const main = () => {
   const cityNameList = [
+    { city: 'Boracay', country: 'Philippines' },
+    { city: 'Seattle', country: 'USA' },
+    { city: 'New York', country: 'USA' },
+    { city: 'Dubai', country: 'United Arab Emirates' },
+    { city: 'Montreal', country: 'Canada' },
+    { city: 'Seoul', country: 'South Korea' },
+    { city: 'Vancouver', country: 'Canade' },
     { city: 'Hawaii', image: './image-files/hawaiiPhoto.jpg', country: 'USA' },
-    { city: 'Jeju', image: './image-files/jejuIslandPhoto.jpg', country: 'Korea' },
+    { city: 'Jeju', image: './image-files/jejuIslandPhoto.jpg', country: 'South Korea' },
     { city: 'kyoto', image: './image-files/kyotoPhoto.jpg', country: 'Japan' },
     { city: 'London', image: './image-files/englandPhoto.jpg', country: 'England' },
-    { city: 'Seattle', country: 'USA' },
-    { city: 'Vancouver', country: 'Canada' },
-    { city: 'New York', country: 'USA' },
+    { city: 'Vancouver', image: './image-files/Vancouver.webp', country: 'Canada' },
   ];
   cityNameList.forEach(city => getLatLong(city.city, city.country, city.image));
 };

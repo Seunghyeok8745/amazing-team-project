@@ -8,19 +8,22 @@ body {
   margin: 0;
   padding: 0;
   position: relative;
-  font-family: "Fira Sans", sans-serif;
+  font-family: 'Fira Sans', sans-serif;
   font-weight: 400;
   font-style: normal;
-
 }
 .section-name {
-font-family: "Overpass", sans-serif;
-font-optical-sizing: auto;
-font-weight: 600;
-font-style: normal;
-letter-spacing: 0px;
-margin-left: 4.5vw;
+  font-family: 'Overpass', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  letter-spacing: 0px;
+  margin-left: 4.5vw;
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 400;
+
 }
+
 /* header */
 .header-area {
   display: flex;
@@ -29,7 +32,7 @@ margin-left: 4.5vw;
   position: sticky;
   top: 0;
   z-index: 999;
-  /*box-shadow: 0px 2px 3px 0px rgb(199, 196, 196);*/
+  box-shadow: 0px 2px 4px 0px rgba(34, 34, 34, 0.036);
 }
 .header-logo-area {
   display: flex;
@@ -37,7 +40,7 @@ margin-left: 4.5vw;
   align-items: center;
 }
 .header-title {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 800;
   font-style: normal;
   font-size: 26px;
@@ -47,7 +50,7 @@ margin-left: 4.5vw;
   position: absolute;
   top: 45px;
   left: 89px;
-  font-family: "Yellowtail", cursive;
+  font-family: 'Yellowtail', cursive;
   font-weight: 200;
   font-style: normal;
   font-size: 14px;
@@ -129,14 +132,15 @@ input {
   width: 100vw;
   height: 82vh;
   background-size: cover;
-  /**/filter: brightness(80%);
-  opacity: 95%
+  /**/
+  filter: brightness(80%);
+  opacity: 95%;
 }
 .carousel-caption {
   display: flex;
 }
 .carousel-caption h1 {
-  font-family: "Outfit", sans-serif;
+  font-family: 'Outfit', sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
@@ -451,3 +455,4 @@ ul {
 .swiper {
   margin-left: 0.5vw;
 }
+

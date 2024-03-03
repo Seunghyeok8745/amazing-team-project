@@ -26,7 +26,7 @@ const success = position => {
   getWeatherInfo(latitude, longitude);
 };
 const error = async () => {
-  console.wraning('location permission needed for the precise weather info');
+  console.warn('location permission needed for the precise weather info');
 };
 
 const getWeatherInfo = async (latitude, longitude) => {

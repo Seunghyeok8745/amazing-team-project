@@ -8,7 +8,7 @@ const apiKey = '3b56745dd240621d3eaad2aac3d8a827';
 const weatherSliderContainer = document.querySelector('#weather-slider-container');
 
 const getCityImage = async cityName => {
-  const url = `${basesURL}/photo?city=${cityName}`;
+  const url = encodeURI(`${basesURL}/photo?city=${cityName}`);
   console.log(`city image: ${url}`);
   const res = await fetch(url);
   if (res.status / 100 !== 2) {

@@ -306,7 +306,6 @@ ul {
   height: 51px;
 }
 
-
 /**/
 .footer-logo-area {
   display: none;
@@ -327,8 +326,22 @@ ul {
   text-align: center;
 }
 
+.image-gpt {
+  overflow: hidden;
+}
+
+.image-gpt img {
+  width: inherit;
+  height: inherit;
+  object-fit: cover;
+}
+
+.description-gpt {
+  overflow: hidden;
+}
+
 /*footer media query*/
-@media (max-width:992px) {
+@media (max-width: 992px) {
   .footer-container {
     padding: 30px;
   }

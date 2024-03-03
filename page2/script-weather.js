@@ -6,7 +6,7 @@ const success = position => {
   getWeatherInfo(latitude, longitude);
 };
 const error = async () => {
-  console.warning('location permission needed for the precise weather info');
+  console.warn('location permission needed for the precise weather info');
 };
 
 const getWeatherInfo = async (latitude, longitude) => {
@@ -23,4 +23,6 @@ const getWeatherInfo = async (latitude, longitude) => {
 
   document.getElementById('location-underline').innerHTML = `<h2 id="location-underline">${location}</h2>`;
   document.getElementById('weather-underline').innerHTML = `<h2 id="weather-underline">${description}</h2>`;
+
+  return description;
 };

@@ -13,6 +13,21 @@ const hostname = window.location.hostname;
 const port = window.location.port;
 const basesURL = `${protocol}//${hostname}${port ? `:${port}` : ''}/.netlify/functions`;
 
+const placeRecommendationList = document.querySelector('.gpt-tourist-list');
+const restaurantRecommendationList = document.querySelector('.gpt-restaurant-list');
+
+const getCityImage = async cityName => {
+  const url = `${basesURL}/photo?city=${cityName}`;
+  console.log(`city image: ${url}`);
+  const res = await fetch(url);
+  if (res.status / 100 !== 2) {
+    console.error(`failed to get image: ${url}, ${res.status}`);
+    return './image-files/banffPhoto.jpg';
+  }
+  data = await res.json();
+  return await data.photoURL;
+};
+
 const getCurrentLocationByIp = async () => {
   const url = `${basesURL}/currentLocation`;
   console.log(`backend: ${url}`);
@@ -165,7 +180,7 @@ async function initMap() {
     map.setCenter(userLatLng);
 
     // weather rendering
-    getWeatherInfo(latitude, longitude);
+    getWeatherInfo(latitude, longitude).then(weather => getRecommendation(city, weather));
   };
 
   if (city) {
@@ -183,3 +198,50 @@ async function initMap() {
     console.error("Error: Your browser doesn't support geolocation.");
   }
 }
+
+const insertRecomendation = (title, destription, photo, selector) => {
+  const template = `
+  <div class="gpt-info">
+    <div class="image-gpt">
+      <img
+        src="${photo}"
+        lazy
+      />
+    </div>
+    <div class="text-gpt">
+      <div class="title-gpt">${title}</div>
+      <div class="description-gpt">${destription}</div>
+    </div>
+  </div>
+  `;
+
+  selector.innerHTML += template;
+};
+
+let rec = [];
+getRecommendation = async (city, weather) => {
+  weather = await weather;
+  getCityRecommendation(city, weather).then(recommendations => {
+    console.log(`recommendations: ${recommendations}`);
+    recommendations.forEach(rec => {
+      console.log(rec);
+      const placeName = rec.placeName;
+      const placeDescription = rec.placeDescription;
+      getCityImage(placeName).then(photo =>
+        insertRecomendation(placeName, placeDescription, photo, placeRecommendationList)
+      );
+    });
+  });
+
+  getRestaurantRecommendation(city, weather).then(recommendations => {
+    console.log(`restaurant: ${recommendations}`);
+    recommendations.forEach(rec => {
+      console.log(rec);
+      const placeName = rec.placeName;
+      const placeDescription = rec.placeDescription;
+      getCityImage(placeName).then(photo =>
+        insertRecomendation(placeName, placeDescription, photo, restaurantRecommendationList)
+      );
+    });
+  });
+};

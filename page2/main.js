@@ -181,6 +181,7 @@ async function initMap() {
       position: userLatLng,
       map: map,
       title: 'Your Location',
+      icon: image,
     });
 
     //example
@@ -263,3 +264,6 @@ const getRecommendation = async (city, weather) => {
     })
   );
 };
+
+// search bar
+searchBar.addEventListener("focus", function() {searchBar.value = ""});

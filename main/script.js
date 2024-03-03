@@ -105,3 +105,7 @@ const cityRecommendation = async () => {
 };
 
 callWithRetry(() => cityRecommendation());
+
+
+// search bar
+searchBar.addEventListener("focus", function() {searchBar.value = ""});

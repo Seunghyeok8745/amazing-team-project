@@ -21,6 +21,9 @@ body {
   margin-left: 4.5vw;
 }
 /* header */
+.header-line-none {
+  text-decoration: none;
+}
 .header-area {
   display: flex;
   background-color: rgb(255, 255, 255);
@@ -160,9 +163,9 @@ input {
   top: -260px;
   font-weight: 200;
   letter-spacing: 1px;
-};
+}
 .click-button:hover {
-  font-weight: 400;
+  font-weight: 600;
 }
 /* main1 weather box area */
 .weatherBox {

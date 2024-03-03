@@ -417,7 +417,7 @@ ul {
     justify-content: flex-start;
     align-items: center;
     margin-right: 60px;
-    margin-left: 55px;
+    margin-left: 75px;
   }
 
   .profile-status h2 {
@@ -453,7 +453,7 @@ ul {
   }
   .map-area {
     background-color: rgba(146, 146, 146, 0.689);
-    width: 100%; /* 전체 너비로 설정 */
+    width: 100%;
     height: 520px;
     margin: 0;
     margin-top: 0;
@@ -480,7 +480,7 @@ ul {
   }
   .navBar {
     position: absolute;
-    right: 1.3em;
+    right: 4em;
   }
   .navBar a {
     color: black;

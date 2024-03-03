@@ -13,6 +13,7 @@ module.exports = merge(common, {
       patterns: [
         { from: 'subpage', to: 'subpage' },
         { from: 'main', to: 'main' },
+        { from: 'login', to: 'login' },
         { from: 'page2', to: 'page2' },
         { from: 'img', to: 'img' },
         { from: 'css', to: 'css' },

@@ -8,3 +8,5 @@ following command will start a local development environment with netlify backen
 yarn
 yarn dev
 ```
+
+domain: https://candid-marigold-88e2bd.netlify.app/main/index.html

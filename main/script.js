@@ -1,4 +1,18 @@
 const userInputFieldList = document.querySelectorAll('.user-search-input');
+const recommendationList = document.querySelector('.recommendation-swiper');
+
+async function callWithRetry(fn, retries = 3) {
+  while (retries-- > 0) {
+    try {
+      return await fn();
+    } catch (error) {
+      if (retries === 0) {
+        throw error;
+      }
+    }
+  }
+  return new Error(`Out of retries`); // Probably using an `Error` subclass
+}
 
 console.log('hello');
 
@@ -58,3 +72,36 @@ userInputFieldList.forEach(userInputField => {
     }
   });
 });
+
+const rednerRecommendation = (spotName, spotDescription, imageURL) => {
+  const template = `
+  <div class="card swiper-slide">
+    <div class="image-box">
+      <img src="${imageURL}" alt="" />
+      <h3 class="name">${spotName}</h3>
+      <p class="content-demo">
+        ${spotDescription}
+      </p>
+    </div>
+  </div>`;
+
+  recommendationList.innerHTML += template;
+};
+
+const cityRecommendation = async () => {
+  const recommandationList = await getTravelRecommendation();
+
+  recommandationList.forEach(recommendation => {
+    console.log(recommendation);
+    const placeName = recommendation.placeName;
+    const placeDescription =
+      recommendation.placeDescription.length > 100
+        ? recommendation.placeDescription.slice(0, 100) + '...'
+        : recommendation.placeDescription;
+    getCityImage(recommendation.placeName).then(photoURL =>
+      rednerRecommendation(placeName, placeDescription, photoURL)
+    );
+  });
+};
+
+callWithRetry(() => cityRecommendation());

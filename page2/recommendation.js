@@ -20,3 +20,14 @@ const getRestaurantRecommendation = async (cityName, weather) => {
   console.log(`Restaurant: ${JSON.stringify(recommendation)}`);
   return recommendation;
 };
+
+const getTravelRecommendation = async () => {
+  console.log('Restaurant recommendation called');
+  const url = encodeURI(`${recommendation_base_url}/recommendation`);
+  console.log(`recommendation: ${url}`);
+  const res = await fetch(url);
+  const data = await res.json();
+  const recommendation = JSON.parse(data.Answer);
+  console.log(`City Recommendation: ${JSON.stringify(recommendation)}`);
+  return recommendation;
+};

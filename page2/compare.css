@@ -1,0 +1,224 @@
+
+/*footer media query*/
+@media (max-width: 992px) {
+    .footer-container {
+      padding: 30px;
+    }
+    .first-line {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding-bottom: 40px;
+    }
+    .copyRight-area {
+      text-align: center;
+    }
+    .footer-brand-name {
+      font-size: 18px;
+      font-weight: 300;
+    }
+    .footer-copyRight-area {
+      font-size: 11px;
+    }
+    .footer-logo-area {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding-bottom: 2em;
+    }
+    .footer-title-sub {
+      position: absolute;
+      top: 3.9em;
+    }
+    .sns-area {
+      padding-bottom: 1.5em;
+    }
+    .info-deco {
+      font-size: 16px;
+    }
+    .info-footer {
+      display: none;
+    }
+    .appStore-area {
+      display: none;
+    }
+  }
+  
+  @media screen and (max-width: 890px) {
+    .main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .profile-status {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      background-color: #37558eec;
+      height: 120px;
+      border-radius: 0;
+      margin-top: 0;
+      padding: 60px 20px;
+      width: 100%;
+    }
+  
+    .name-area i {
+      background-color: white;
+      padding: 12px;
+      font-size: 24px;
+      border-radius: 50%;
+      margin-left: 5px;
+      text-align: center;
+      text-decoration: none;
+      margin-right: 10px;
+      font-weight: medium;
+      color: black;
+    }
+  
+    .name-area h4 {
+      font-size: 22px;
+      width: 100px;
+    }
+  
+    .name-area {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin-right: 60px;
+      margin-left: 55px;
+    }
+  
+    .profile-status h2 {
+      color: white;
+      font-size: 16px;
+      margin: 0;
+    }
+  
+    .location-indicator {
+      padding: 17px;
+      background-color: rgba(255, 255, 255, 0.384);
+      border-radius: 12px;
+      text-align: center;
+      margin: 10px 0;
+      width: 14em;
+      margin-right: 30px;
+    }
+    .weather-indicator {
+      padding: 17px;
+      background-color: rgba(255, 255, 255, 0.384);
+      border-radius: 12px;
+      text-align: center;
+      margin: 10px 0;
+      width: 14em;
+    }
+    .profile-status #location-underline,
+    .profile-status #weather-underline {
+      text-decoration: underline;
+      font-size: 15px;
+    }
+    .weather-indicator h2:not(#weather-underline) {
+      display: none;
+    }
+    .map-area {
+      background-color: rgba(146, 146, 146, 0.689);
+      width: 100%; /* 전체 너비로 설정 */
+      height: 520px;
+      margin: 0;
+      margin-top: 0;
+      border-radius: 0 0 0 0;
+      border: none;
+    }
+    .header-area {
+      margin-bottom: 20px;
+    }
+    .header-title {
+      font-size: 25px;
+    }
+    .header-title-sub {
+      top: 42px;
+      left: 90px;
+      font-size: 13px;
+    }
+    .header-area img {
+      max-width: 100%;
+      height: 30px;
+    }
+    .search-input {
+      width: 140px;
+    }
+    .navBar {
+      position: absolute;
+      right: 1.3em;
+    }
+    .navBar a {
+      color: black;
+      padding: 0px 9px;
+      font-size: 19px;
+      text-decoration: none;
+      font-weight: 400;
+    }
+    .login-deco {
+      margin-right: 10px;
+    }
+    .main2 {
+      padding-top: 100px;
+      padding-left: 50px;
+      letter-spacing: 2px;
+      margin-bottom: 150px;
+    }
+    .main2 h3 {
+      color: #303e63;
+      font-size: 25px;
+    }
+    .main2 ul {
+      padding-left: 28px;
+      font-size: 22px;
+      padding-top: 30px;
+      margin-bottom: 40px;
+    }
+    .tourist-attraction li {
+      margin-top: 30px;
+    }
+    /* gpt-info */
+    .gpt-info {
+      display: flex;
+      flex-direction: row;
+    }
+    .image-gpt {
+      margin-top: 25px;
+      margin-bottom: 10px;
+      width: 250px;
+      height: 250px;
+      background-color: #b5b3b3;
+      border-radius: 15px;
+    }
+    .text-gpt {
+      margin-top: 45px;
+      margin-left: 55px;
+      width: 54vw;
+      height: 210px;
+      background-color: #b5b3b3;
+      border-radius: 15px;
+    }
+  }
+  
+  @media screen and (max-width: 700px) {
+    .name-area {
+      margin-right: 20px;
+      margin-left: 0;
+    }
+    .location-indicator {
+      padding: 20px;
+    }
+    .profile-status {
+      height: 130px;
+    }
+    .map-area {
+      height: 530px;
+    }
+  }
+  

@@ -326,6 +326,26 @@ ul {
   text-align: center;
 }
 
+.text-gpt {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.title-gpt {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.description-gpt {
+  font-size: 16px;
+  color: #666;
+}
+
 .image-gpt {
   overflow: hidden;
 }

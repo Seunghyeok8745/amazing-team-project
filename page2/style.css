@@ -305,3 +305,71 @@ ul {
   width: 134px;
   height: 51px;
 }
+
+
+/**/
+.footer-logo-area {
+  display: none;
+}
+.footer-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  font-size: 26px;
+  color: rgb(10, 41, 77); /*#174cae;*/
+}
+.footer-title-sub {
+  font-family: 'Yellowtail', cursive;
+  font-weight: 200;
+  font-style: normal;
+  font-size: 14px;
+  color: #b5b3b3;
+  text-align: center;
+}
+
+/*footer media query*/
+@media (max-width:992px) {
+  .footer-container {
+    padding: 30px;
+  }
+  .first-line {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 40px;
+  }
+  .copyRight-area {
+    text-align: center;
+  }
+  .footer-brand-name {
+    font-size: 18px;
+    font-weight: 300;
+  }
+  .footer-copyRight-area {
+    font-size: 11px;
+  }
+  .footer-logo-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 2em;
+  }
+  .footer-title-sub {
+    position: absolute;
+    top: 3.9em;
+  }
+  .sns-area {
+    padding-bottom: 1.5em;
+  }
+  .info-deco {
+    font-size: 16px;
+  }
+  .info-footer {
+    display: none;
+  }
+  .appStore-area {
+    display: none;
+  }
+}

@@ -16,19 +16,6 @@ const basesURL = `${protocol}//${hostname}${port ? `:${port}` : ''}/.netlify/fun
 const placeRecommendationList = document.querySelector('.gpt-tourist-list');
 const restaurantRecommendationList = document.querySelector('.gpt-restaurant-list');
 
-async function callWithRetry(fn, retries = 10) {
-  while (retries-- > 0) {
-    try {
-      return await fn();
-    } catch (error) {
-      if (retries === 0) {
-        throw error;
-      }
-    }
-  }
-  return new Error(`Out of retries`); // Probably using an `Error` subclass
-}
-
 const getCityImage = async cityName => {
   const url = `${basesURL}/photo?city=${cityName}`;
   console.log(`city image: ${url}`);
@@ -234,7 +221,7 @@ const insertRecomendation = (title, destription, photo, selector) => {
 let rec = [];
 const getRecommendation = async (city, weather) => {
   weather = await weather;
-  const recommendationFn = getCityRecommendation(city, weather).then(recommendations => {
+  getCityRecommendation(city, weather).then(recommendations => {
     console.log(`recommendations: ${recommendations}`);
     recommendations.forEach(rec => {
       console.log(rec);
@@ -246,7 +233,7 @@ const getRecommendation = async (city, weather) => {
     });
   });
 
-  const restaurantFn = getRestaurantRecommendation(city, weather).then(recommendations => {
+  getRestaurantRecommendation(city, weather).then(recommendations => {
     console.log(`restaurant: ${recommendations}`);
     recommendations.forEach(rec => {
       console.log(rec);
@@ -257,7 +244,4 @@ const getRecommendation = async (city, weather) => {
       );
     });
   });
-
-  callWithRetry(recommendationFn);
-  callWithRetry(restaurantFn);
 };

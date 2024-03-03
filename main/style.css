@@ -320,6 +320,7 @@ div .container {
 }
 .card p {
   text-align: left;
+  width: auto;
 }
 
 /*notification*/
@@ -373,7 +374,7 @@ div .container {
 .noti-btn-first:hover {
   background-color: white;
   color: #4184bb;
-  /*transition: 0.9s;*/
+  transition: 0.3s;
   cursor: pointer;
 }
 
@@ -483,14 +484,166 @@ ul {
   top: -100px;
 }
 
+/*weather carousel image size*/
 .weather-city-image-container {
   height: 22.5rem;
   width: 100%;
 }
-
 .weather-city-image-container img {
   height: inherit;
   width: inherit;
   /* todo: image resizing issue */
   object-fit: cover;
+}
+
+/**/
+.footer-logo-area {
+  display: none;
+}
+.footer-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  font-size: 26px;
+  color: rgb(10, 41, 77); /*#174cae;*/
+}
+.footer-title-sub {
+  font-family: 'Yellowtail', cursive;
+  font-weight: 200;
+  font-style: normal;
+  font-size: 14px;
+  color: #b5b3b3;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .container, .container-md, .container-sm {
+    max-width: 90vw;
+  }
+}
+@media (max-width:650px) {
+  .card .image-box img {
+    height: 35vh;
+    width: 35vw;
+  }
+}
+
+/*footer media query*/
+@media (max-width:992px) {
+  .img-area img {
+    height: 70vh;
+  }
+  .card .image-box img {
+    height: 35vh;
+    width: 30vw;
+  }
+  .card p {
+    width: 30vw;
+  }
+  .carousel-caption h1 {
+    left: -10vw;
+    top: -50vh;
+  }
+  .carousel-caption a {
+    left: -10vw;
+    top: -27.5vh;
+  }
+  .searchContainer input {
+    top: -24vh;
+    left: -10vw;
+  }
+  .searchContainer button {
+    left: -9vw;
+    top: -23vh;
+  }
+  .weatherBox {
+    width: 45vw;
+    height: 27vh;
+    right: -9vh;
+    top: -30vh;
+    text-align: left;
+  }
+  .weatherBox h5 {
+    font-size: 20px;
+    padding-top: 22px;
+    padding-bottom: 10px;
+    padding-left: 30px;
+    margin-bottom: 0px;
+  }
+  .weatherBox p {
+    font-size: 17px;
+    padding-bottom: 0px;
+    padding-left: 37px;
+    padding-top: 0px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+  }
+  .noti-container {
+    height: 110vh;
+  }
+  .noti-box {
+    padding: 40px 0px;
+    padding-top: 45px;
+  }
+  .noti-name {
+    font-size: 24px;
+  }
+  .noti-desc {
+    font-size: 18px;
+  }
+  .noti-btn {
+    padding: 17px;
+  }
+  .noti-btn-first {
+    width: 230px;
+    font-size: 15px;
+  }
+  .noti-btn-second {
+    font-size: 14px;
+    padding: 9px;
+    width: 42px;
+  }
+  .footer-container {
+    padding: 30px;
+  }
+  .first-line {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 40px;
+  }
+  .copyRight-area {
+    text-align: center;
+  }
+  .footer-brand-name {
+    font-size: 18px;
+    font-weight: 300;
+  }
+  .footer-copyRight-area {
+    font-size: 11px;
+  }
+  .footer-logo-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 2em;
+  }
+  .footer-title-sub {
+    position: absolute;
+    top: 3.9em;
+  }
+  .sns-area {
+    padding-bottom: 1.5em;
+  }
+  .info-deco {
+    font-size: 16px;
+  }
+  .info-footer {
+    display: none;
+  }
+  .appStore-area {
+    display: none;
+  }
 }

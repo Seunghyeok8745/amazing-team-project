@@ -112,6 +112,9 @@ input {
   text-decoration: none;
   font-weight: 400;
 }
+.logIn:hover {
+  color: rgb(90, 90, 90);
+}
 .login-deco {
   margin-right: 10px;
 }
@@ -157,6 +160,9 @@ input {
   top: -260px;
   font-weight: 200;
   letter-spacing: 1px;
+};
+.click-button:hover {
+  font-weight: 400;
 }
 /* main1 weather box area */
 .weatherBox {

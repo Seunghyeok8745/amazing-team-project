@@ -30,7 +30,7 @@ async function callWithRetry(fn, retries = 3) {
 }
 
 const getCityImage = async cityName => {
-  const url = `${basesURL}/photo?city=${cityName}`;
+  const url = encodeURI(`${basesURL}/photo?city=${cityName}`);
   console.log(`city image: ${url}`);
   const res = await fetch(url);
   if (res.status / 100 !== 2) {

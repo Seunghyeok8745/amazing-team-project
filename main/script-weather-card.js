@@ -143,7 +143,7 @@ const main = () => {
     { city: 'Dubai', country: 'United Arab Emirates' },
     { city: 'Montreal', country: 'Canada' },
     { city: 'Seoul', country: 'South Korea' },
-    { city: 'Vancouver', country: 'Canade' },
+    { city: 'dublin', country: 'Ireland' },
     { city: 'Hawaii', image: './image-files/hawaiiPhoto.jpg', country: 'USA' },
     { city: 'Jeju', image: './image-files/jejuIslandPhoto.jpg', country: 'South Korea' },
     { city: 'kyoto', image: './image-files/kyotoPhoto.jpg', country: 'Japan' },

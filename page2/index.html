@@ -39,6 +39,7 @@
             <input type="text" class="search-input" placeholder="Enter City, State, Country" />
           </div>
           <a href="#" class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></a>
+
           <a href="#" class="logIn">Weather</a>
           <a href="#" class="logIn">Location</a>
           <a href="#" class="logIn login-deco">About</a>
@@ -50,7 +51,8 @@
       <!--weather api 넣는 곳!-->
       <div class="profile-status">
         <div class="name-area">
-          <h4><i class="fa-solid fa-user"></i> Hi, Jane</h4>
+          <i class="fa-solid fa-user"></i>
+          <h4>Hi, Jane</h4>
         </div>
         <div class="location-indicator">
           <h2>
@@ -59,7 +61,7 @@
           </h2>
         </div>
         <div class="weather-indicator">
-          <h2>It's going to</h2>
+          <h2 id="weather-description">It's going to</h2>
           <h2 id="weather-underline">Rain</h2>
           <h2>where you are</h2>
         </div>
@@ -84,7 +86,7 @@
         <div class="image-gpt"></div>
         <div class="text-gpt"></div>
       </div>
-      <ul>
+      <ul class="tourist-attraction">
         <li>Tourist Attraction</li>
       </ul>
       <div class="gpt-info">

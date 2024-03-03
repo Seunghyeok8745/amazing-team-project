@@ -13,6 +13,8 @@ function login() {
     alert('Please provide your login details to access your account.');
     loginErrorMsg.style.opacity = 1;
   } else {
-    window.location.href = '../main/index.html';
+    const q = new URLSearchParams(window.location.search);
+    const nextPage = q.get('secondpage') === 'true' ? '../page2/index.html' : '../main/index.html';
+    window.location.href = nextPage;
   }
 }
